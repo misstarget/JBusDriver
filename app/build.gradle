@@ -1,4 +1,9 @@
-apply plugin: 'com.android.application'
+//替换成
+//ext.mainApp = true //设置为true，表示此module为主app module，一直以application方式编译
+apply from: 'https://raw.githubusercontent.com/luckybilly/CC/master/cc-settings.gradle'
+//注意：最好放在build.gradle中代码的第一行
+
+
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'//kapt3插件

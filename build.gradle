@@ -16,6 +16,9 @@ buildscript {
         classpath "com.tencent.bugly:tinker-support:${versions.tinker_support}"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+        //CC component
+        classpath "com.billy.android:autoregister:${versions.autoregister}"
+
     }
 }
 

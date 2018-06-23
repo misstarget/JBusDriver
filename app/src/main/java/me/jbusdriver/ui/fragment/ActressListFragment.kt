@@ -13,8 +13,8 @@ import io.reactivex.rxkotlin.subscribeBy
 import jbusdriver.me.jbusdriver.R
 import me.jbusdriver.base.*
 import me.jbusdriver.base.common.C
-import me.jbusdriver.base.CacheLoader
-import me.jbusdriver.http.JAVBusService
+import me.jbusdriver.base.http.JAVBusService
+import me.jbusdriver.base.mvp.bean.ILink
 import me.jbusdriver.mvp.bean.*
 import me.jbusdriver.mvp.model.CollectModel
 import me.jbusdriver.mvp.presenter.ActressLinkPresenterImpl

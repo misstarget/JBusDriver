@@ -1,48 +1,41 @@
-package me.jbusdriver.ui.fragment
+package com.jbusdriver.component.recommend.ui.fragment
 
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import com.billy.cc.core.component.CC
 import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.chad.library.adapter.base.loadmore.LoadMoreView
-import jbusdriver.me.jbusdriver.R
-import kotlinx.android.synthetic.main.layout_recycle.*
-import kotlinx.android.synthetic.main.layout_swipe_recycle.*
+import com.jbusdriver.component.recommend.R
+import com.jbusdriver.component.recommend.mvp.bean.RecommendRespBean
+import com.jbusdriver.component.recommend.mvp.presenter.HotRecommendPresenterImpl
+import com.jbusdriver.component.recommend.ui.contract.Contract
 import me.jbusdriver.base.KLog
+import me.jbusdriver.base.common.AppBaseRecycleFragment
+import me.jbusdriver.base.common.toGlideUrl
+import me.jbusdriver.base.http.JAVBusService.Companion.defaultFastUrl
 import me.jbusdriver.base.urlHost
 import me.jbusdriver.base.urlPath
-import me.jbusdriver.base.common.AppBaseRecycleFragment
-import me.jbusdriver.common.toGlideUrl
-import me.jbusdriver.http.JAVBusService.Companion.defaultFastUrl
-import me.jbusdriver.mvp.HotRecommendContract
-import me.jbusdriver.mvp.bean.ActressInfo
-import me.jbusdriver.mvp.bean.RecommendRespBean
-import me.jbusdriver.mvp.presenter.HotRecommendPresenterImpl
-import me.jbusdriver.ui.activity.MovieDetailActivity
-import me.jbusdriver.ui.activity.MovieListActivity
+
 
 /**
  * Created by Administrator on 2017/7/30.
  */
-class RecommendListFragment : AppBaseRecycleFragment<HotRecommendContract.HotRecommendPresenter, HotRecommendContract.HotRecommendView, RecommendRespBean>(), HotRecommendContract.HotRecommendView {
-
+class RecommendListFragment : AppBaseRecycleFragment<Contract.HotRecommendContract.HotRecommendPresenter, Contract.HotRecommendContract.HotRecommendView, RecommendRespBean>(), Contract.HotRecommendContract.HotRecommendView {
 
     override fun createPresenter() = HotRecommendPresenterImpl()
 
-    override val layoutId: Int = R.layout.layout_swipe_recycle
-    override val swipeView: SwipeRefreshLayout?  by lazy { sr_refresh }
-    override val recycleView: RecyclerView by lazy { rv_recycle }
+    override val layoutId: Int = R.layout.basic_layout_swipe_recycle
+    override val swipeView: SwipeRefreshLayout?  by lazy { rootViewWeakRef?.get()?.findViewById<SwipeRefreshLayout>(R.id.basic_sr_refresh) }
+    override val recycleView: RecyclerView by lazy { rootViewWeakRef?.get()?.findViewById<RecyclerView>(R.id.basic_rv_recycle) ?: error("not find RecyclerView")  }
     override val layoutManager: RecyclerView.LayoutManager  by lazy { LinearLayoutManager(viewContext) }
 
     override val adapter = object : BaseQuickAdapter<RecommendRespBean, BaseViewHolder>(R.layout.layout_recommend_item) {
 
         override fun convert(helper: BaseViewHolder, item: RecommendRespBean) {
-//            val images = defaultImageUrlHosts[if (item.key.img.endsWith("xyz")) "xyz" else "default"]?.map { it +  }
-//                    ?: emptyList()
-//            val image = images.shuffled().firstOrNull() ?: ""
             Glide.with(viewContext).load(item.key.img.toGlideUrl).into(helper.getView(R.id.iv_recommend_img))
             helper.setText(R.id.tv_recommend_title, item.key.name)
                     .setText(R.id.tv_reason, if (item.reason?.isNotBlank() == true) "推荐理由：${item.reason}" else "")
@@ -76,20 +69,21 @@ class RecommendListFragment : AppBaseRecycleFragment<HotRecommendContract.HotRec
                 val xyz = it.key.url.urlHost.endsWith("xyz")
                 val needChange = !xyz && it.key.url.urlHost != defaultFastUrl
                 val url = if (needChange) defaultFastUrl + it.key.url.urlPath else it.key.url
-                if (it.key.url.contains("/star/", false)) {
-                    MovieListActivity.start(viewContext, ActressInfo(it.key.name, it.key.img, url))
-                } else {
-//                    SearchResultActivity.start(this.viewContext, it.key.name.split(" ").component1())
-                    MovieDetailActivity.start(this.viewContext, url)
-                }
+                //todo add link
+//                if (it.key.url.contains("/star/", false)) {
+//                    MovieListActivity.start(viewContext, ActressInfo(it.key.name, it.key.img, url))
+//                } else {
+////                    SearchResultActivity.start(this.viewContext, it.key.name.split(" ").component1())
+//                    MovieDetailActivity.start(this.viewContext, url)
+//                }
             }
         }
     }
 
     override fun showContents(data: List<*>) {
-        val size =  adapter.data.size
-        adapter.data .clear()
-        adapter.notifyItemRangeRemoved(0,size)
+        val size = adapter.data.size
+        adapter.data.clear()
+        adapter.notifyItemRangeRemoved(0, size)
         super.showContents(data)
     }
 

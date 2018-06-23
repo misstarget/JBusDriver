@@ -1,5 +1,6 @@
 package me.jbusdriver.common
 
+import com.billy.cc.core.component.CC
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 import com.orhanobut.logger.PrettyFormatStrategy
@@ -10,18 +11,12 @@ import com.umeng.analytics.MobclickAgent
 import io.reactivex.plugins.RxJavaPlugins
 import jbusdriver.me.jbusdriver.BuildConfig
 import me.jbusdriver.base.JBusManager
-import me.jbusdriver.base.arrayMapof
 import me.jbusdriver.debug.stetho.initializeStetho
-import me.jbusdriver.http.JAVBusService
-
 
 lateinit var JBus: AppContext
 
-
 class AppContext : TinkerApplication(ShareConstants.TINKER_ENABLE_ALL, "me.jbusdriver.common.JBusApplicationLike",
         "com.tencent.tinker.loader.TinkerLoader", false) {
-
-    val JBusServices by lazy { arrayMapof<String, JAVBusService>() }
 
     override fun onCreate() {
         super.onCreate()
@@ -52,6 +47,10 @@ class AppContext : TinkerApplication(ShareConstants.TINKER_ENABLE_ALL, "me.jbusd
 
         MobclickAgent.setDebugMode(BuildConfig.DEBUG)
 
+        CC.enableDebug(BuildConfig.DEBUG)  //普通调试日志，会提示一些错误信息
+        CC.enableVerboseLog(BuildConfig.DEBUG)  //组件调用的详细过程日志，用于跟踪整个调用过程
+        CC.enableRemoteCC(BuildConfig.DEBUG)
+
         RxJavaPlugins.setErrorHandler {
             try {
                 if (!BuildConfig.DEBUG) MobclickAgent.reportError(this, it)
@@ -63,17 +62,6 @@ class AppContext : TinkerApplication(ShareConstants.TINKER_ENABLE_ALL, "me.jbusd
         JBus = this
 
         this.registerActivityLifecycleCallbacks(JBusManager)
-    }
-
-
-    override fun onLowMemory() {
-        super.onLowMemory()
-        JBusServices.clear()
-    }
-
-    override fun onTrimMemory(level: Int) {
-        super.onTrimMemory(level)
-        JBusServices.clear()
     }
 
 

@@ -3,12 +3,13 @@ package me.jbusdriver.mvp.presenter
 import io.reactivex.BackpressureStrategy
 import io.reactivex.rxkotlin.addTo
 import me.jbusdriver.base.SchedulersCompat
+import me.jbusdriver.base.mvp.bean.PageInfo
+import me.jbusdriver.base.mvp.bean.ResultPageBean
+import me.jbusdriver.base.mvp.model.BaseModel
+import me.jbusdriver.base.mvp.presenter.AbstractRefreshLoadMorePresenterImpl
 import me.jbusdriver.db.bean.History
 import me.jbusdriver.db.service.HistoryService
 import me.jbusdriver.mvp.HistoryContract
-import me.jbusdriver.mvp.bean.PageInfo
-import me.jbusdriver.mvp.bean.ResultPageBean
-import me.jbusdriver.base.mvp.model.BaseModel
 import org.jsoup.nodes.Document
 
 class HistoryPresenterImpl : AbstractRefreshLoadMorePresenterImpl<HistoryContract.HistoryView, History>(), HistoryContract.HistoryPresenter {

@@ -1,8 +1,8 @@
 package me.jbusdriver.mvp.presenter
 
+import me.jbusdriver.base.mvp.bean.ILink
+import me.jbusdriver.base.mvp.bean.PageInfo
 import me.jbusdriver.mvp.bean.ActressInfo
-import me.jbusdriver.mvp.bean.ILink
-import me.jbusdriver.mvp.bean.PageInfo
 import org.jsoup.nodes.Document
 
 /**

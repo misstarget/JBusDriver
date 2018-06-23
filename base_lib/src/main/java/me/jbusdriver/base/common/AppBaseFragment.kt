@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import com.afollestad.materialdialogs.MaterialDialog
 import io.reactivex.rxkotlin.addTo
 import me.jbusdriver.base.KLog
+import me.jbusdriver.base.arrayMapof
 import me.jbusdriver.base.mvp.BaseView
 import me.jbusdriver.base.mvp.presenter.BasePresenter
 import me.jbusdriver.base.mvp.presenter.loader.PresenterFactory
@@ -32,7 +33,7 @@ abstract class AppBaseFragment<P : BasePresenter<V>, V> : BaseFragment(), Loader
     private var mFirstStart: Boolean = false//Is this the first start of the fragment (after onCreate)
     private var mViewReCreate = false //rootViewWeakRef 是否重新创建了
     protected var mBasePresenter: P? = null
-    private var rootViewWeakRef: WeakReference<View>? = null
+    protected var rootViewWeakRef: WeakReference<View>? = null
     private var mUniqueLoaderIdentifier: Int = 0//Unique identifier for the loader, persisted across re-creation
     //lazy load tag
     private var isLazyLoaded = false
@@ -234,5 +235,13 @@ abstract class AppBaseFragment<P : BasePresenter<V>, V> : BaseFragment(), Loader
         KLog.d("$TAG restoreState : $bundle")
         mBasePresenter?.restoreFromState()
     }
+
+    private val viewCache by lazy { arrayMapof<Int, View>() }
+    @Throws
+    protected fun <T : View> findView(id: Int) :T =
+            viewCache.getOrPut(id) {
+                rootViewWeakRef?.get()?.findViewById(id) as? T
+            } as? T ?: error("not find view for $id")
+
 
 }

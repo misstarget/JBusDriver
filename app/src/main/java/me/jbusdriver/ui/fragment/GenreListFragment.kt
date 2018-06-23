@@ -5,13 +5,11 @@ import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.RecyclerView
 import com.xiaofeng.flowlayoutmanager.FlowLayoutManager
 import jbusdriver.me.jbusdriver.R
-import kotlinx.android.synthetic.main.layout_recycle.*
-import kotlinx.android.synthetic.main.layout_swipe_recycle.*
 import me.jbusdriver.base.GSON
-import me.jbusdriver.base.fromJson
-import me.jbusdriver.base.toJsonString
 import me.jbusdriver.base.common.AppBaseRecycleFragment
 import me.jbusdriver.base.common.C
+import me.jbusdriver.base.fromJson
+import me.jbusdriver.base.toJsonString
 import me.jbusdriver.mvp.GenreListContract
 import me.jbusdriver.mvp.bean.Genre
 import me.jbusdriver.mvp.presenter.GenreListPresenterImpl
@@ -25,9 +23,9 @@ class GenreListFragment : AppBaseRecycleFragment<GenreListContract.GenreListPres
 
     override fun createPresenter() = GenreListPresenterImpl()
 
-    override val layoutId: Int = R.layout.layout_swipe_recycle
-    override val swipeView: SwipeRefreshLayout?  by lazy { sr_refresh }
-    override val recycleView: RecyclerView by lazy { rv_recycle }
+    override val layoutId: Int = R.layout.basic_layout_swipe_recycle
+    override val swipeView: SwipeRefreshLayout? get() = findView(R.id.basic_sr_refresh)
+    override val recycleView: RecyclerView get() = findView(R.id.basic_rv_recycle)
     override val layoutManager: RecyclerView.LayoutManager  by lazy { FlowLayoutManager().apply { isAutoMeasureEnabled = true } }
 
     override val adapter =/* object :*/ GenreAdapter()/*{

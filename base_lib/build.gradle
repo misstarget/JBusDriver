@@ -1,4 +1,5 @@
-apply plugin: 'com.android.library'
+apply from: 'https://raw.githubusercontent.com/luckybilly/CC/master/cc-settings.gradle'
+
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'//kapt3插件
@@ -81,6 +82,6 @@ dependencies {
 
     api "com.umeng.analytics:analytics:${versions.analytics}"
 
-
+    api "com.billy.android:cc:${versions.cc}"
 
 }

@@ -14,7 +14,7 @@ import io.reactivex.rxkotlin.addTo
 import jbusdriver.me.jbusdriver.R
 import kotlinx.android.synthetic.main.layout_detail_relative_movies.view.*
 import me.jbusdriver.base.*
-import me.jbusdriver.common.toGlideUrl
+import me.jbusdriver.base.common.toGlideUrl
 import me.jbusdriver.mvp.bean.Movie
 import me.jbusdriver.mvp.bean.convertDBItem
 import me.jbusdriver.mvp.model.CollectModel

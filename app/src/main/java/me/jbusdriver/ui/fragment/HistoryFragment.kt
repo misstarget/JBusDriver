@@ -11,14 +11,16 @@ import android.view.MenuItem
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import jbusdriver.me.jbusdriver.R
-import kotlinx.android.synthetic.main.layout_recycle.*
-import kotlinx.android.synthetic.main.layout_swipe_recycle.*
 import me.jbusdriver.base.GlideApp
 import me.jbusdriver.base.common.AppBaseRecycleFragment
-import me.jbusdriver.common.toGlideUrl
+import me.jbusdriver.base.common.toGlideUrl
+import me.jbusdriver.base.mvp.bean.ILink
 import me.jbusdriver.db.bean.History
 import me.jbusdriver.mvp.HistoryContract
-import me.jbusdriver.mvp.bean.*
+import me.jbusdriver.mvp.bean.ActressInfo
+import me.jbusdriver.mvp.bean.Movie
+import me.jbusdriver.mvp.bean.SearchLink
+import me.jbusdriver.mvp.bean.des
 import me.jbusdriver.mvp.presenter.HistoryPresenterImpl
 import me.jbusdriver.ui.adapter.BaseAppAdapter
 import java.text.SimpleDateFormat
@@ -31,9 +33,9 @@ class HistoryFragment : AppBaseRecycleFragment<HistoryContract.HistoryPresenter,
 
     override fun createPresenter() = HistoryPresenterImpl()
 
-    override val layoutId: Int = R.layout.layout_swipe_recycle
-    override val swipeView: SwipeRefreshLayout?  by lazy { sr_refresh }
-    override val recycleView: RecyclerView by lazy { rv_recycle }
+    override val layoutId: Int = R.layout.basic_layout_swipe_recycle
+    override val swipeView: SwipeRefreshLayout? get() = findView(R.id.basic_sr_refresh)
+    override val recycleView: RecyclerView get() = findView(R.id.basic_rv_recycle)
     override val layoutManager: RecyclerView.LayoutManager  by lazy { LinearLayoutManager(viewContext) }
 
     override fun onCreate(savedInstanceState: Bundle?) {

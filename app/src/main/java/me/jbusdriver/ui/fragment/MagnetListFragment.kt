@@ -11,13 +11,11 @@ import io.reactivex.Flowable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
 import jbusdriver.me.jbusdriver.R
-import kotlinx.android.synthetic.main.layout_recycle.*
-import kotlinx.android.synthetic.main.layout_swipe_recycle.*
 import me.jbusdriver.base.*
 import me.jbusdriver.base.common.AppBaseRecycleFragment
 import me.jbusdriver.base.common.C
+import me.jbusdriver.base.mvp.bean.Magnet
 import me.jbusdriver.mvp.MagnetListContract
-import me.jbusdriver.mvp.bean.Magnet
 import me.jbusdriver.mvp.presenter.MagnetListPresenterImpl
 import me.jbusdriver.ui.adapter.BaseAppAdapter
 import org.jsoup.Jsoup
@@ -31,9 +29,9 @@ class MagnetListFragment : AppBaseRecycleFragment<MagnetListContract.MagnetListP
 
     override fun createPresenter() = MagnetListPresenterImpl(magnetLoaderKey, keyword)
 
-    override val layoutId: Int = R.layout.layout_swipe_recycle
-    override val swipeView: SwipeRefreshLayout?  by lazy { sr_refresh }
-    override val recycleView: RecyclerView by lazy { rv_recycle }
+    override val layoutId: Int = R.layout.basic_layout_swipe_recycle
+    override val swipeView: SwipeRefreshLayout? get() = findView(R.id.basic_sr_refresh)
+    override val recycleView: RecyclerView get() = findView(R.id.basic_rv_recycle)
     override val layoutManager: RecyclerView.LayoutManager  by lazy { LinearLayoutManager(viewContext) }
 
 

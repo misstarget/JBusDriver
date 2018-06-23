@@ -2,7 +2,7 @@ package  me.jbusdriver.ui.data.magnet
 
 import android.util.Base64
 import me.jbusdriver.base.KLog
-import me.jbusdriver.mvp.bean.Magnet
+import me.jbusdriver.base.mvp.bean.Magnet
 import org.jsoup.Jsoup
 
 interface IMagnetLoader {

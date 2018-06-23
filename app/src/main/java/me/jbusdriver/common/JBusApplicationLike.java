@@ -30,8 +30,9 @@ public class JBusApplicationLike extends DefaultApplicationLike {
     public void onCreate() {
         super.onCreate();
 
+        // todo
         if (getApplication() instanceof AppContext) {
-            AppContextKt.setJBus(((AppContext) getApplication()));
+            AppContextKt.setJBus((AppContext) getApplication());
         }
 
         // 这里实现SDK初始化，appId替换成你的在Bugly平台申请的appId

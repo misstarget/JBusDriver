@@ -2,11 +2,11 @@ package me.jbusdriver.mvp.bean
 
 import android.text.TextUtils
 import me.jbusdriver.base.KLog
+import me.jbusdriver.base.mvp.bean.ActressCategory
+import me.jbusdriver.base.mvp.bean.ILink
+import me.jbusdriver.base.mvp.bean.LinkCategory
 import me.jbusdriver.base.urlHost
-import me.jbusdriver.db.bean.ActressCategory
-import me.jbusdriver.db.bean.LinkCategory
 import org.jsoup.nodes.Document
-import org.jsoup.nodes.Element
 import java.io.Serializable
 
 /**
@@ -84,7 +84,7 @@ data class MovieDetail(val title: String,
             }
         }
 
-        fun parseMagnets(doc: Element): List<Magnet> {
+   /*     fun parseMagnets(doc: Element): List<Magnet> {
             return doc.select("#magnet-table tr:has(a)").map {
                 Magnet(it.select("td").getOrNull(0)?.text() ?: "",
                         it.select("td").getOrNull(1)?.text() ?: "",
@@ -93,7 +93,7 @@ data class MovieDetail(val title: String,
 //                        it.select("a[class*=btn]").map { it.text() }
                 )
             }
-        }
+        }*/
     }
 
 }
@@ -138,10 +138,6 @@ data class ActressInfo(val name: String, val avatar: String, override val link: 
 
 }
 
-data class Magnet(val name: String, val size: String, val date: String, override val link: String) : ILink {
-    @Transient
-    override var categoryId: Int = LinkCategory.id ?: 10
-}
 
 data class ImageSample(val title: String, val thumb: String, val image: String)
 

@@ -23,15 +23,14 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import jbusdriver.me.jbusdriver.R
 import kotlinx.android.synthetic.main.activity_watch_large_image.*
-import kotlinx.android.synthetic.main.activity_watch_large_image.view.*
 import kotlinx.android.synthetic.main.layout_large_image_item.view.*
 import me.jbusdriver.base.*
+import me.jbusdriver.base.common.BaseActivity
+import me.jbusdriver.base.common.toGlideUrl
 import me.jbusdriver.base.http.OnProgressListener
 import me.jbusdriver.base.http.addProgressListener
 import me.jbusdriver.base.http.removeProgressListener
-import me.jbusdriver.base.common.BaseActivity
 import me.jbusdriver.common.JBus
-import me.jbusdriver.common.toGlideUrl
 import me.jbusdriver.ui.widget.ImageGestureListener
 import java.io.File
 import java.util.concurrent.TimeUnit

@@ -10,10 +10,10 @@ import com.chad.library.adapter.base.BaseViewHolder
 import jbusdriver.me.jbusdriver.R
 import kotlinx.android.synthetic.main.layout_detail_image_samples.view.*
 import me.jbusdriver.base.GlideApp
+import me.jbusdriver.base.common.toGlideUrl
 import me.jbusdriver.base.displayMetrics
 import me.jbusdriver.base.dpToPx
 import me.jbusdriver.base.inflate
-import me.jbusdriver.common.toGlideUrl
 import me.jbusdriver.mvp.bean.ImageSample
 import me.jbusdriver.ui.activity.WatchLargeImageActivity
 import me.jbusdriver.ui.adapter.BaseAppAdapter

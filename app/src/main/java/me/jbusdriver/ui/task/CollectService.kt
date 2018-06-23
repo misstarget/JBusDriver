@@ -7,12 +7,12 @@ import android.os.Environment
 import com.google.gson.*
 import com.umeng.analytics.MobclickAgent
 import me.jbusdriver.base.*
+import me.jbusdriver.base.mvp.bean.ILink
 import me.jbusdriver.common.JBus
 import me.jbusdriver.db.bean.LinkItem
 import me.jbusdriver.db.service.CategoryService
 import me.jbusdriver.db.service.LinkService
 import me.jbusdriver.mvp.bean.ActressInfo
-import me.jbusdriver.mvp.bean.ILink
 import me.jbusdriver.mvp.bean.Movie
 import me.jbusdriver.mvp.bean.convertDBItem
 import java.io.File

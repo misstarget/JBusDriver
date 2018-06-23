@@ -13,17 +13,19 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import jbusdriver.me.jbusdriver.R
 import kotlinx.android.synthetic.main.layout_menu_op_head.view.*
-import kotlinx.android.synthetic.main.layout_recycle.*
-import kotlinx.android.synthetic.main.layout_swipe_recycle.*
 import me.jbusdriver.base.KLog
-import me.jbusdriver.base.dpToPx
-import me.jbusdriver.base.toast
 import me.jbusdriver.base.common.AppBaseRecycleFragment
-import me.jbusdriver.db.bean.Category
-import me.jbusdriver.db.bean.LinkCategory
+import me.jbusdriver.base.dpToPx
+import me.jbusdriver.base.mvp.bean.Category
+import me.jbusdriver.base.mvp.bean.ILink
+import me.jbusdriver.base.mvp.bean.LinkCategory
+import me.jbusdriver.base.toast
 import me.jbusdriver.db.service.CategoryService
 import me.jbusdriver.mvp.LinkCollectContract
-import me.jbusdriver.mvp.bean.*
+import me.jbusdriver.mvp.bean.CollectLinkWrapper
+import me.jbusdriver.mvp.bean.SearchLink
+import me.jbusdriver.mvp.bean.convertDBItem
+import me.jbusdriver.mvp.bean.des
 import me.jbusdriver.mvp.model.CollectModel
 import me.jbusdriver.mvp.presenter.LinkCollectPresenterImpl
 import me.jbusdriver.ui.activity.MovieListActivity
@@ -35,8 +37,8 @@ import me.jbusdriver.ui.holder.CollectDirEditHolder
 
 class LinkCollectFragment : AppBaseRecycleFragment<LinkCollectContract.LinkCollectPresenter, LinkCollectContract.LinkCollectView, CollectLinkWrapper<ILink>>(), LinkCollectContract.LinkCollectView {
 
-    override val swipeView: SwipeRefreshLayout? by lazy { sr_refresh }
-    override val recycleView: RecyclerView by lazy { rv_recycle }
+    override val swipeView: SwipeRefreshLayout? get() = findView(R.id.basic_sr_refresh)
+    override val recycleView: RecyclerView get() = findView(R.id.basic_rv_recycle)
     override val layoutManager: RecyclerView.LayoutManager by lazy { LinearLayoutManager(viewContext) }
     override val adapter: BaseQuickAdapter<CollectLinkWrapper<ILink>, in BaseViewHolder> by lazy {
         object : BaseAppAdapter<CollectLinkWrapper<ILink>, BaseViewHolder>(null) {
@@ -130,7 +132,7 @@ class LinkCollectFragment : AppBaseRecycleFragment<LinkCollectContract.LinkColle
 
         }
     }
-    override val layoutId: Int = R.layout.layout_swipe_recycle
+    override val layoutId: Int = R.layout.basic_layout_swipe_recycle
 
     override fun createPresenter() = LinkCollectPresenterImpl()
     private val holder by lazy { CollectDirEditHolder(viewContext, LinkCategory) }

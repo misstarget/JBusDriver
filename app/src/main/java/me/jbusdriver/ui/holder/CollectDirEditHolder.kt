@@ -13,9 +13,9 @@ import jbusdriver.me.jbusdriver.R
 import kotlinx.android.synthetic.main.layout_collect_dir_edit.view.*
 import me.jbusdriver.base.KLog
 import me.jbusdriver.base.inflate
+import me.jbusdriver.base.mvp.bean.AllFirstParentDBCategoryGroup
+import me.jbusdriver.base.mvp.bean.Category
 import me.jbusdriver.base.toast
-import me.jbusdriver.db.bean.AllFirstParentDBCategoryGroup
-import me.jbusdriver.db.bean.Category
 import me.jbusdriver.ui.adapter.BaseAppAdapter
 
 /**

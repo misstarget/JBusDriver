@@ -1,23 +1,24 @@
-package me.jbusdriver.mvp.presenter
+package com.jbusdriver.component.recommend.mvp.presenter
 
 import android.net.Uri
 import android.util.Base64
 import com.bumptech.glide.Glide
+import com.jbusdriver.component.recommend.http.RecommendService
+import com.jbusdriver.component.recommend.mvp.bean.RecommendRespBean
+import com.jbusdriver.component.recommend.ui.contract.Contract
 import io.reactivex.rxkotlin.addTo
 import me.jbusdriver.base.*
-import me.jbusdriver.common.toGlideUrl
-import me.jbusdriver.http.JAVBusService
-import me.jbusdriver.http.RecommendService
-import me.jbusdriver.mvp.HotRecommendContract
-import me.jbusdriver.mvp.bean.Magnet
-import me.jbusdriver.mvp.bean.PageInfo
-import me.jbusdriver.mvp.bean.RecommendRespBean
-import me.jbusdriver.mvp.bean.ResultPageBean
+import me.jbusdriver.base.common.toGlideUrl
+import me.jbusdriver.base.http.JAVBusService
+import me.jbusdriver.base.mvp.bean.Magnet
+import me.jbusdriver.base.mvp.bean.PageInfo
+import me.jbusdriver.base.mvp.bean.ResultPageBean
 import me.jbusdriver.base.mvp.model.BaseModel
+import me.jbusdriver.base.mvp.presenter.AbstractRefreshLoadMorePresenterImpl
 import org.jsoup.nodes.Document
 import java.util.concurrent.atomic.AtomicInteger
 
-class HotRecommendPresenterImpl : AbstractRefreshLoadMorePresenterImpl<HotRecommendContract.HotRecommendView, Magnet>(), HotRecommendContract.HotRecommendPresenter {
+class HotRecommendPresenterImpl : AbstractRefreshLoadMorePresenterImpl<Contract.HotRecommendContract.HotRecommendView, Magnet>(), Contract.HotRecommendContract.HotRecommendPresenter {
 
     private val count = AtomicInteger(1)
 
@@ -71,7 +72,7 @@ class HotRecommendPresenterImpl : AbstractRefreshLoadMorePresenterImpl<HotRecomm
     }
 
     override fun onLoadMore() {
-        if (lastPage <  count.incrementAndGet()) {
+        if (lastPage < count.incrementAndGet()) {
             count.set(1)
         }
         loadData4Page(count.get())
@@ -85,4 +86,5 @@ class HotRecommendPresenterImpl : AbstractRefreshLoadMorePresenterImpl<HotRecomm
         rxManager.clear()
         loadData4Page(count.get())
     }
+
 }

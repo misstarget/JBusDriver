@@ -3,14 +3,11 @@ package me.jbusdriver.mvp.bean
 import android.text.TextUtils
 import com.chad.library.adapter.base.entity.MultiItemEntity
 import com.google.gson.annotations.SerializedName
-import me.jbusdriver.base.ACache
-import me.jbusdriver.base.KLog
-import me.jbusdriver.base.toJsonString
-import me.jbusdriver.base.urlHost
+import me.jbusdriver.base.*
 import me.jbusdriver.base.common.C
-import me.jbusdriver.base.CacheLoader
-import me.jbusdriver.db.bean.MovieCategory
-import me.jbusdriver.http.JAVBusService
+import me.jbusdriver.base.http.JAVBusService
+import me.jbusdriver.base.mvp.bean.ILink
+import me.jbusdriver.base.mvp.bean.MovieCategory
 import org.jsoup.nodes.Document
 
 /**

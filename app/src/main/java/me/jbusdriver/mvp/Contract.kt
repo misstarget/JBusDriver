@@ -1,8 +1,12 @@
 package me.jbusdriver.mvp
 
 import me.jbusdriver.base.mvp.BaseView
+import me.jbusdriver.base.mvp.bean.ILink
+import me.jbusdriver.base.mvp.bean.PageInfo
 import me.jbusdriver.base.mvp.presenter.BasePresenter
-import me.jbusdriver.mvp.bean.*
+import me.jbusdriver.mvp.bean.ActressInfo
+import me.jbusdriver.mvp.bean.Genre
+import me.jbusdriver.mvp.bean.Movie
 import me.jbusdriver.mvp.presenter.BaseCollectPresenter
 import me.jbusdriver.ui.data.enums.DataSourceType
 
@@ -107,7 +111,3 @@ interface MagnetListContract {
     interface MagnetListPresenter : BasePresenter.BaseRefreshLoadMorePresenter<MagnetListView>, BasePresenter.LazyLoaderPresenter
 }
 
-interface HotRecommendContract {
-    interface HotRecommendView : BaseView.BaseListWithRefreshView
-    interface HotRecommendPresenter :  BasePresenter.BaseRefreshLoadMorePresenter<HotRecommendView>
-}

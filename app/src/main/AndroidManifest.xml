@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="jbusdriver.me.jbusdriver">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -17,7 +18,9 @@
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon,android:name,android:roundIcon"
+        >
 
         <!-- 友盟key -->
         <meta-data
@@ -73,8 +76,7 @@
             android:name="me.jbusdriver.ui.task.TrimLikeService"
             android:exported="false" />
 
-        <activity android:name="me.jbusdriver.ui.activity.HotRecommendActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+
     </application>
 
 </manifest>

@@ -4,10 +4,10 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import com.squareup.sqlbrite3.BriteDatabase
 import me.jbusdriver.base.KLog
+import me.jbusdriver.base.db.CategoryTable
 import me.jbusdriver.base.getIntByColumn
 import me.jbusdriver.base.getStringByColumn
-import me.jbusdriver.db.CategoryTable
-import me.jbusdriver.db.bean.Category
+import me.jbusdriver.base.mvp.bean.Category
 import java.util.concurrent.TimeUnit
 
 /**

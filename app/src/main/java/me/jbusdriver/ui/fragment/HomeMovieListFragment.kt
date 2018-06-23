@@ -1,7 +1,7 @@
 package me.jbusdriver.ui.fragment
 
 import android.os.Bundle
-import me.jbusdriver.http.JAVBusService
+import me.jbusdriver.base.http.JAVBusService
 import me.jbusdriver.mvp.LinkListContract
 import me.jbusdriver.mvp.bean.PageLink
 import me.jbusdriver.mvp.presenter.HomeMovieListPresenterImpl

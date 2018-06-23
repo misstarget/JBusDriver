@@ -20,7 +20,7 @@ import me.jbusdriver.base.common.BaseActivity
 import me.jbusdriver.base.common.C
 import me.jbusdriver.base.CacheLoader
 import me.jbusdriver.http.GitHub
-import me.jbusdriver.http.JAVBusService
+import me.jbusdriver.base.http.JAVBusService
 import me.jbusdriver.ui.data.enums.DataSourceType
 import me.jbusdriver.ui.task.CollectService
 import me.jbusdriver.ui.task.TrimLikeService

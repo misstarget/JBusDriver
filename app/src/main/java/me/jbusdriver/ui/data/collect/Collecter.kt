@@ -7,10 +7,10 @@ import com.google.gson.*
 import com.umeng.analytics.MobclickAgent
 import io.reactivex.schedulers.Schedulers
 import me.jbusdriver.base.*
+import me.jbusdriver.base.http.JAVBusService
+import me.jbusdriver.base.mvp.bean.ILink
 import me.jbusdriver.common.JBus
-import me.jbusdriver.base.RxBus
 import me.jbusdriver.db.service.LinkService
-import me.jbusdriver.http.JAVBusService
 import me.jbusdriver.mvp.bean.*
 import java.io.File
 import java.lang.reflect.Type

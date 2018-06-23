@@ -13,8 +13,8 @@ import com.chad.library.adapter.base.BaseViewHolder
 import jbusdriver.me.jbusdriver.R
 import me.jbusdriver.base.*
 import me.jbusdriver.base.common.C
-import me.jbusdriver.common.toGlideUrl
-import me.jbusdriver.mvp.bean.ILink
+import me.jbusdriver.base.common.toGlideUrl
+import me.jbusdriver.base.mvp.bean.ILink
 import me.jbusdriver.mvp.bean.Movie
 import me.jbusdriver.mvp.bean.convertDBItem
 import me.jbusdriver.mvp.model.CollectModel

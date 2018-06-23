@@ -1,8 +1,8 @@
-//替换成
-//ext.mainApp = true //设置为true，表示此module为主app module，一直以application方式编译
-apply from: 'https://raw.githubusercontent.com/luckybilly/CC/master/cc-settings.gradle'
+ext.mainApp = true //设置为true，表示此module为主app module，一直以application方式编译
 //注意：最好放在build.gradle中代码的第一行
+apply from: 'https://raw.githubusercontent.com/luckybilly/CC/master/cc-settings.gradle'
 
+println(ext.runAsApp)
 
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
@@ -151,6 +151,9 @@ dependencies {
 
 
     implementation "com.android.support:multidex:1.0.3" // 多dex配置
+
+    //components
+    addComponent 'component_recommend'
 }
 
 configurations.all { config ->

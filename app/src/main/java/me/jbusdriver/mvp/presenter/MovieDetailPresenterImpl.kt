@@ -5,17 +5,14 @@ import io.reactivex.Flowable
 import io.reactivex.FlowableEmitter
 import io.reactivex.rxkotlin.addTo
 import me.jbusdriver.base.*
-import me.jbusdriver.base.CacheLoader
-import me.jbusdriver.base.SchedulersCompat
-import me.jbusdriver.base.SimpleSubscriber
-import me.jbusdriver.db.bean.History
-import me.jbusdriver.db.service.HistoryService
-import me.jbusdriver.http.JAVBusService
-import me.jbusdriver.http.RecommendService
-import me.jbusdriver.mvp.MovieDetailContract
-import me.jbusdriver.mvp.bean.*
+import me.jbusdriver.base.http.JAVBusService
 import me.jbusdriver.base.mvp.model.AbstractBaseModel
 import me.jbusdriver.base.mvp.model.BaseModel
+import me.jbusdriver.base.mvp.presenter.BasePresenterImpl
+import me.jbusdriver.db.bean.History
+import me.jbusdriver.db.service.HistoryService
+import me.jbusdriver.mvp.MovieDetailContract
+import me.jbusdriver.mvp.bean.*
 import me.jbusdriver.mvp.model.RecommendModel
 import org.jsoup.Jsoup
 import java.util.*
@@ -104,40 +101,43 @@ class MovieDetailPresenterImpl(private val fromHistory: Boolean) : BasePresenter
     }
 
     override fun likeIt(movie: Movie, reason: String?) {
-        val likeKey = movie.saveKey + "_like"
-        Flowable.fromCallable {
-            RecommendModel.getLikeCount(likeKey)
-        }.flatMap { c ->
-            if (c > 3) {
-                error("一天点赞最多3次")
-            }
-            val uid = RecommendModel.getLikeUID(likeKey)
-            val params = arrayMapof(
-                    "uid" to uid,
-                    "key" to RecommendBean(name = "${movie.code} ${movie.title}", img = movie.imageUrl, url = movie.link).toJsonString()
-            )
-            if (reason.orEmpty().isNotBlank()) {
-                params.put("reason", reason)
-            }
-            RecommendService.INSTANCE.putRecommends(params).map {
-                KLog.d("res : $it")
-                RecommendModel.save(likeKey, uid)
-                it["message"]?.asString?.let {
-                    mView?.viewContext?.toast(it)
-                }
-                return@map Math.min(c + 1, 3)
-            }
-        }.onErrorReturn {
-            it.message?.let {
-                mView?.viewContext?.toast(it)
-            }
-            3
-        }.compose(SchedulersCompat.io()).subscribeWith(object : SimpleSubscriber<Int>() {
-            override fun onNext(t: Int) {
-                super.onNext(t)
-                mView?.changeLikeIcon(t)
-            }
-        }).addTo(rxManager)
+//        val likeKey = movie.saveKey + "_like"
+//        Flowable.fromCallable {
+//            RecommendModel.getLikeCount(likeKey)
+//        }.flatMap { c ->
+//            if (c > 3) {
+//                error("一天点赞最多3次")
+//            }
+//            val uid = RecommendModel.getLikeUID(likeKey)
+//            val params = arrayMapof(
+//                    "uid" to uid,
+//                    "key" to RecommendBean(name = "${movie.code} ${movie.title}", img = movie.imageUrl, url = movie.link).toJsonString()
+//            )
+//            if (reason.orEmpty().isNotBlank()) {
+//                params.put("reason", reason)
+//            }
+//            RecommendService.INSTANCE.putRecommends(params).map {
+//                KLog.d("res : $it")
+//                RecommendModel.save(likeKey, uid)
+//                it["message"]?.asString?.let {
+//                    mView?.viewContext?.toast(it)
+//                }
+//                return@map Math.min(c + 1, 3)
+//            }
+//        }.onErrorReturn {
+//            it.message?.let {
+//                mView?.viewContext?.toast(it)
+//            }
+//            3
+//        }.compose(SchedulersCompat.io()).subscribeWith(object : SimpleSubscriber<Int>() {
+//            override fun onNext(t: Int) {
+//                super.onNext(t)
+//                mView?.changeLikeIcon(t)
+//            }
+//        }).addTo(rxManager)
+
+        //todo
+        NotImplementedError("late")
     }
 
     override fun restoreFromState() {

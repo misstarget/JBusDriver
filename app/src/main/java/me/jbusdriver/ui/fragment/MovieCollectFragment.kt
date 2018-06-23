@@ -12,15 +12,13 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import jbusdriver.me.jbusdriver.R
 import kotlinx.android.synthetic.main.layout_menu_op_head.view.*
-import kotlinx.android.synthetic.main.layout_recycle.*
-import kotlinx.android.synthetic.main.layout_swipe_recycle.*
 import me.jbusdriver.base.GlideApp
 import me.jbusdriver.base.KLog
 import me.jbusdriver.base.common.AppBaseRecycleFragment
+import me.jbusdriver.base.common.toGlideUrl
+import me.jbusdriver.base.mvp.bean.Category
+import me.jbusdriver.base.mvp.bean.MovieCategory
 import me.jbusdriver.base.toast
-import me.jbusdriver.common.toGlideUrl
-import me.jbusdriver.db.bean.Category
-import me.jbusdriver.db.bean.MovieCategory
 import me.jbusdriver.db.service.CategoryService
 import me.jbusdriver.mvp.MovieCollectContract
 import me.jbusdriver.mvp.bean.CollectLinkWrapper
@@ -37,10 +35,10 @@ import me.jbusdriver.ui.holder.CollectDirEditHolder
 
 class MovieCollectFragment : AppBaseRecycleFragment<MovieCollectContract.MovieCollectPresenter, MovieCollectContract.MovieCollectView, CollectLinkWrapper<Movie>>(), MovieCollectContract.MovieCollectView {
 
-    override val swipeView: SwipeRefreshLayout? by lazy { sr_refresh }
-    override val recycleView: RecyclerView by lazy { rv_recycle }
+    override val swipeView: SwipeRefreshLayout? get() = findView(R.id.basic_sr_refresh)
+    override val recycleView: RecyclerView get() = findView(R.id.basic_rv_recycle)
     override val layoutManager: RecyclerView.LayoutManager by lazy { LinearLayoutManager(viewContext) }
-    override val layoutId: Int = R.layout.layout_swipe_recycle
+    override val layoutId: Int = R.layout.basic_layout_swipe_recycle
     override val adapter: BaseQuickAdapter<CollectLinkWrapper<Movie>, in BaseViewHolder> by lazy {
         object : BaseAppAdapter<CollectLinkWrapper<Movie>, BaseViewHolder>(null) {
 

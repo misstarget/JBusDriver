@@ -7,6 +7,11 @@ import me.jbusdriver.base.ACache;
  */
 
 public class C {
+    public static class C_RECOMMEND {
+
+        public static final String OPEN_RECOMMEND = "recommend/open";
+    }
+
     public static class Cache {
         public static final int DAY = ACache.TIME_DAY; //缓存的固定时间
         public static final int WEEK = ACache.TIME_DAY * 7; //缓存的固定时间

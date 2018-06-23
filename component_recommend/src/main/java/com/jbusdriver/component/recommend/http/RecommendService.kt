@@ -1,4 +1,4 @@
-package me.jbusdriver.http
+package com.jbusdriver.component.recommend.http
 
 import com.google.gson.JsonObject
 import io.reactivex.Flowable

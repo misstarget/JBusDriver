@@ -18,13 +18,11 @@ import io.reactivex.Flowable
 import io.reactivex.rxkotlin.addTo
 import jbusdriver.me.jbusdriver.R
 import kotlinx.android.synthetic.main.layout_menu_op_head.view.*
-import kotlinx.android.synthetic.main.layout_recycle.*
-import kotlinx.android.synthetic.main.layout_swipe_recycle.*
 import me.jbusdriver.base.*
 import me.jbusdriver.base.common.AppBaseRecycleFragment
-import me.jbusdriver.common.toGlideUrl
-import me.jbusdriver.db.bean.ActressCategory
-import me.jbusdriver.db.bean.Category
+import me.jbusdriver.base.common.toGlideUrl
+import me.jbusdriver.base.mvp.bean.ActressCategory
+import me.jbusdriver.base.mvp.bean.Category
 import me.jbusdriver.db.service.CategoryService
 import me.jbusdriver.mvp.ActressCollectContract
 import me.jbusdriver.mvp.bean.ActressDBType
@@ -44,8 +42,8 @@ import java.util.*
 class ActressCollectFragment : AppBaseRecycleFragment<ActressCollectContract.ActressCollectPresenter, ActressCollectContract.ActressCollectView, CollectLinkWrapper<ActressInfo>>(), ActressCollectContract.ActressCollectView {
 
 
-    override val swipeView: SwipeRefreshLayout? by lazy { sr_refresh }
-    override val recycleView: RecyclerView by lazy { rv_recycle }
+    override val swipeView: SwipeRefreshLayout? get() = findView(R.id.basic_sr_refresh)
+    override val recycleView: RecyclerView get() = findView(R.id.basic_rv_recycle)
     override val layoutManager: RecyclerView.LayoutManager by lazy {
         StaggeredGridLayoutManager(viewContext.spanCount, OrientationHelper.VERTICAL)
     }
@@ -62,27 +60,27 @@ class ActressCollectFragment : AppBaseRecycleFragment<ActressCollectContract.Act
 
                         GlideApp.with(holder.itemView.context).asBitmap().load(actress.avatar.toGlideUrl)
                                 .error(R.drawable.ic_nowprinting).into(object : BitmapImageViewTarget(holder.getView(R.id.iv_actress_avatar)) {
-                            override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
-                                Flowable.just(resource).map {
-                                    Palette.from(resource).generate()
-                                }.compose(SchedulersCompat.io())
-                                        .subscribeWith(object : SimpleSubscriber<Palette>() {
-                                            override fun onNext(t: Palette) {
-                                                super.onNext(t)
-                                                val swatch = listOfNotNull(t.lightMutedSwatch, t.lightVibrantSwatch, t.vibrantSwatch, t.mutedSwatch)
-                                                if (!swatch.isEmpty()) {
-                                                    swatch[randomNum(swatch.size)].let {
-                                                        holder.setBackgroundColor(R.id.tv_actress_name, it.rgb)
-                                                        holder.setTextColor(R.id.tv_actress_name, it.bodyTextColor)
+                                    override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
+                                        Flowable.just(resource).map {
+                                            Palette.from(resource).generate()
+                                        }.compose(SchedulersCompat.io())
+                                                .subscribeWith(object : SimpleSubscriber<Palette>() {
+                                                    override fun onNext(t: Palette) {
+                                                        super.onNext(t)
+                                                        val swatch = listOfNotNull(t.lightMutedSwatch, t.lightVibrantSwatch, t.vibrantSwatch, t.mutedSwatch)
+                                                        if (!swatch.isEmpty()) {
+                                                            swatch[randomNum(swatch.size)].let {
+                                                                holder.setBackgroundColor(R.id.tv_actress_name, it.rgb)
+                                                                holder.setTextColor(R.id.tv_actress_name, it.bodyTextColor)
+                                                            }
+                                                        }
                                                     }
-                                                }
-                                            }
-                                        })
-                                        .addTo(rxManager)
+                                                })
+                                                .addTo(rxManager)
 
-                                super.onResourceReady(resource, transition)
-                            }
-                        })
+                                        super.onResourceReady(resource, transition)
+                                    }
+                                })
                         //加载名字
                         holder.setText(R.id.tv_actress_name, actress.name)
 
@@ -163,7 +161,7 @@ class ActressCollectFragment : AppBaseRecycleFragment<ActressCollectContract.Act
         }
 
     }
-    override val layoutId: Int = R.layout.layout_swipe_recycle
+    override val layoutId: Int = R.layout.basic_layout_swipe_recycle
 
 
     private val holder by lazy { CollectDirEditHolder(viewContext, ActressCategory) }
@@ -199,6 +197,7 @@ class ActressCollectFragment : AppBaseRecycleFragment<ActressCollectContract.Act
     override fun initData() {
         adapter.setMultiTypeDelegate(mBasePresenter?.adapterDelegate)
     }
+
 
     override fun createPresenter() = ActressCollectPresenterImpl()
 

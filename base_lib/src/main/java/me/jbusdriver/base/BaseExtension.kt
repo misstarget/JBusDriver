@@ -1,5 +1,6 @@
 package me.jbusdriver.base
 
+import android.app.Activity
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
@@ -16,6 +17,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import com.billy.cc.core.component.CC
+import com.billy.cc.core.component.CCResult
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import io.reactivex.Flowable
@@ -187,6 +190,23 @@ fun Context.browse(url: String, errorHandler: (Throwable) -> Unit = {}) {
     } catch (e: Exception) {
         errorHandler(e)
     }
+}
+
+
+//cc extension
+
+inline fun <reified T> CC.openActivity() {
+    this.context?.let {
+        val i = Intent(it, T::class.java)
+
+        if (context !is Activity) {
+            //调用方没有设置context或app间组件跳转，context为application
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+        context.startActivity(i)
+        CC.sendCCResult(this.callId, CCResult.success())
+    }
+
 }
 
 

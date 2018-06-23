@@ -21,8 +21,8 @@ import kotlinx.android.synthetic.main.layout_actress_attr.view.*
 import kotlinx.android.synthetic.main.layout_load_all.view.*
 import me.jbusdriver.base.*
 import me.jbusdriver.base.common.C
-import me.jbusdriver.common.toGlideUrl
-import me.jbusdriver.http.RecommendService
+import me.jbusdriver.base.common.toGlideUrl
+import me.jbusdriver.base.mvp.bean.ILink
 import me.jbusdriver.mvp.LinkListContract
 import me.jbusdriver.mvp.bean.*
 import me.jbusdriver.mvp.model.CollectModel
@@ -222,40 +222,42 @@ class LinkedMovieListFragment : AbsMovieListFragment(), LinkListContract.LinkLis
     }
 
     fun likeIt(act: ActressInfo, reason: String?) {
-        val likeKey = act.name + act.avatar.urlPath + "_like"
-        Flowable.fromCallable {
-            RecommendModel.getLikeCount(likeKey)
-        }.flatMap { c ->
-            if (c > 3) {
-                error("一天点赞最多3次")
-            }
-            val uid = RecommendModel.getLikeUID(likeKey)
-            val params = arrayMapof(
-                    "uid" to uid,
-                    "key" to RecommendBean(name = act.name, img = act.avatar, url = act.link).toJsonString()
-            )
-            if (reason.orEmpty().isNotBlank()) {
-                params.put("reason", reason)
-            }
-            RecommendService.INSTANCE.putRecommends(params).map {
-                KLog.d("res : $it")
-                RecommendModel.save(likeKey, uid)
-                it["message"]?.asString?.let {
-                    viewContext.toast(it)
-                }
-                return@map Math.min(c + 1, 3)
-            }
-        }.onErrorReturn {
-            it.message?.let {
-                viewContext.toast(it)
-            }
-            3
-        }.compose(SchedulersCompat.io()).subscribeWith(object : SimpleSubscriber<Int>() {
-            override fun onNext(t: Int) {
-                super.onNext(t)
-                changeLikeIcon(t)
-            }
-        }).addTo(rxManager)
+//        todo
+        NotImplementedError("late")
+//        val likeKey = act.name + act.avatar.urlPath + "_like"
+//        Flowable.fromCallable {
+//            RecommendModel.getLikeCount(likeKey)
+//        }.flatMap { c ->
+//            if (c > 3) {
+//                error("一天点赞最多3次")
+//            }
+//            val uid = RecommendModel.getLikeUID(likeKey)
+//            val params = arrayMapof(
+//                    "uid" to uid,
+//                    "key" to RecommendBean(name = act.name, img = act.avatar, url = act.link).toJsonString()
+//            )
+//            if (reason.orEmpty().isNotBlank()) {
+//                params.put("reason", reason)
+//            }
+//            RecommendService.INSTANCE.putRecommends(params).map {
+//                KLog.d("res : $it")
+//                RecommendModel.save(likeKey, uid)
+//                it["message"]?.asString?.let {
+//                    viewContext.toast(it)
+//                }
+//                return@map Math.min(c + 1, 3)
+//            }
+//        }.onErrorReturn {
+//            it.message?.let {
+//                viewContext.toast(it)
+//            }
+//            3
+//        }.compose(SchedulersCompat.io()).subscribeWith(object : SimpleSubscriber<Int>() {
+//            override fun onNext(t: Int) {
+//                super.onNext(t)
+//                changeLikeIcon(t)
+//            }
+//        }).addTo(rxManager)
     }
 
 

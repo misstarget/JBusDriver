@@ -12,30 +12,29 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import com.afollestad.materialdialogs.MaterialDialog
+import com.billy.cc.core.component.CC
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
 import jbusdriver.me.jbusdriver.R
-import kotlinx.android.synthetic.main.layout_recycle.*
 import kotlinx.android.synthetic.main.layout_seek_page.view.*
-import kotlinx.android.synthetic.main.layout_swipe_recycle.*
 import me.jbusdriver.base.KLog
 import me.jbusdriver.base.RxBus
-import me.jbusdriver.base.inflate
-import me.jbusdriver.base.toast
 import me.jbusdriver.base.common.AppBaseRecycleFragment
+import me.jbusdriver.base.common.C
+import me.jbusdriver.base.inflate
+import me.jbusdriver.base.mvp.bean.PageInfo
+import me.jbusdriver.base.toast
 import me.jbusdriver.mvp.LinkListContract
 import me.jbusdriver.mvp.bean.PageChangeEvent
-import me.jbusdriver.mvp.bean.PageInfo
-import me.jbusdriver.ui.activity.HotRecommendActivity
 import me.jbusdriver.ui.activity.SearchResultActivity
 import me.jbusdriver.ui.data.AppConfiguration
 
 abstract class LinkableListFragment<T> : AppBaseRecycleFragment<LinkListContract.LinkListPresenter, LinkListContract.LinkListView, T>(), LinkListContract.LinkListView {
 
-    override val layoutId: Int = R.layout.layout_swipe_recycle
+    override val layoutId: Int = R.layout.basic_layout_swipe_recycle
 
-    override val swipeView: SwipeRefreshLayout? by lazy { sr_refresh }
-    override val recycleView: RecyclerView  by lazy { rv_recycle }
+    override val swipeView: SwipeRefreshLayout? get() = findView(R.id.basic_sr_refresh)
+    override val recycleView: RecyclerView get() = findView(R.id.basic_rv_recycle)
     override val layoutManager: RecyclerView.LayoutManager  by lazy { LinearLayoutManager(viewContext) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -114,8 +113,13 @@ abstract class LinkableListFragment<T> : AppBaseRecycleFragment<LinkListContract
                 }
             }
             R.id.action_recommend -> {
-                KLog.d("action_recommend")
-                HotRecommendActivity.start(this.viewContext)
+                KLog.d("action_recommend ${CC.hasComponent(C.C_RECOMMEND::class.java.name)}")
+                //call recommend todo
+                CC.obtainBuilder(C.C_RECOMMEND::class.java.name).setActionName(C.C_RECOMMEND.OPEN_RECOMMEND)
+                        .build().callAsync { cc, result ->
+                            KLog.d("call $result")
+                        }
+//                HotRecommendActivity.start(this.viewContext)
             }
         }
         return super.onOptionsItemSelected(item)
@@ -175,7 +179,7 @@ abstract class LinkableListFragment<T> : AppBaseRecycleFragment<LinkListContract
 
     private fun showEditDialog(info: PageInfo) {
         MaterialDialog.Builder(viewContext).title("输入页码:")
-                .input("输入跳转页码", null, false, { dialog, input ->
+                .input("输入跳转页码", null, false) { dialog, input ->
                     KLog.d("page $input")
                     input.toString().toIntOrNull()?.let {
                         if (it < 1) {
@@ -187,7 +191,7 @@ abstract class LinkableListFragment<T> : AppBaseRecycleFragment<LinkListContract
                     } ?: let {
                         viewContext.toast("必须输入数字!")
                     }
-                })
+                }
                 .autoDismiss(false)
                 .inputType(InputType.TYPE_CLASS_NUMBER)
                 .neutralText("选择页码").onNeutral { dialog, _ ->

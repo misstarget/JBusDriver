@@ -1,0 +1,9 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.jbusdriver.component.recommend">
+
+    <application>
+        <activity
+            android:name=".ui.activity.HotRecommendActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+    </application>
+</manifest>

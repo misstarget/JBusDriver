@@ -2,15 +2,16 @@ package me.jbusdriver.mvp.presenter
 
 import io.reactivex.Flowable
 import io.reactivex.rxkotlin.addTo
-import me.jbusdriver.base.GSON
-import me.jbusdriver.base.fromJson
 import me.jbusdriver.base.CacheLoader
+import me.jbusdriver.base.GSON
 import me.jbusdriver.base.SchedulersCompat
-import me.jbusdriver.mvp.MagnetListContract
-import me.jbusdriver.mvp.bean.Magnet
-import me.jbusdriver.mvp.bean.PageInfo
-import me.jbusdriver.mvp.bean.ResultPageBean
+import me.jbusdriver.base.fromJson
+import me.jbusdriver.base.mvp.bean.Magnet
+import me.jbusdriver.base.mvp.bean.PageInfo
+import me.jbusdriver.base.mvp.bean.ResultPageBean
 import me.jbusdriver.base.mvp.model.BaseModel
+import me.jbusdriver.base.mvp.presenter.AbstractRefreshLoadMorePresenterImpl
+import me.jbusdriver.mvp.MagnetListContract
 import me.jbusdriver.ui.data.magnet.MagnetLoaders
 import org.jsoup.nodes.Document
 

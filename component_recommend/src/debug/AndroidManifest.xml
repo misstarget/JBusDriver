@@ -5,7 +5,9 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-    <application android:name="me.jbusdriver.component.recommend.App"
+    <application
+        android:name=".App"
+        android:label="@string/app_name"
         android:allowBackup="true"
         android:icon="@drawable/ic_laughing_man"
         android:roundIcon="@drawable/ic_laughing_man"

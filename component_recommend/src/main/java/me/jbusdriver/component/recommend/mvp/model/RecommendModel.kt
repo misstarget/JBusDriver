@@ -1,18 +1,17 @@
-package me.jbusdriver.mvp.model
+package me.jbusdriver.component.recommend.mvp.model
 
 import com.google.gson.JsonObject
-import me.jbusdriver.base.ACache
-import me.jbusdriver.base.GSON
-import me.jbusdriver.base.KLog
-import me.jbusdriver.base.fromJson
-import me.jbusdriver.common.JBus
+import me.jbusdriver.base.*
 import java.util.*
 
 object RecommendModel {
     private const val COUNT = "count"
     private const val UID = "uid"
 
-    private val likeCache by lazy { ACache.get(JBus, "like") }
+    private val likeCache by lazy {
+        ACache.get(JBusManager.manager.firstOrNull()?.get()
+                ?: error("must call after app init"), "like")
+    }
 
     fun trimCache() {
         val dir = likeCache.dir()

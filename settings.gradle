@@ -1,1 +1,1 @@
-include ':app', ':base_lib', ':component_interceptors', ':component_magnet', ':component_recommend'
+include ':app', ':base_lib', ':component_interceptors', ':component_magnet', ':component_recommend', ':component_movie_detail'

@@ -1,11 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.jbusdriver.component.recommend">
+    package="me.jbusdriver.component.recommend">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-    <application android:name=".App"
+    <application android:name="me.jbusdriver.component.recommend.App"
         android:allowBackup="true"
         android:icon="@drawable/ic_laughing_man"
         android:roundIcon="@drawable/ic_laughing_man"
@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme"
         >
         <activity
-            android:name=".ui.activity.HotRecommendActivity"
+            android:name="me.jbusdriver.component.recommend.ui.activity.HotRecommendActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

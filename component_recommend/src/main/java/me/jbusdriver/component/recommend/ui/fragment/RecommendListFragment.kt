@@ -4,7 +4,6 @@ import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import com.billy.cc.core.component.CC
 import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
@@ -33,7 +32,7 @@ class RecommendListFragment : AppBaseRecycleFragment<Contract.HotRecommendContra
     override val recycleView: RecyclerView by lazy { rootViewWeakRef?.get()?.findViewById<RecyclerView>(R.id.basic_rv_recycle) ?: error("not find RecyclerView")  }
     override val layoutManager: RecyclerView.LayoutManager  by lazy { LinearLayoutManager(viewContext) }
 
-    override val adapter = object : BaseQuickAdapter<RecommendRespBean, BaseViewHolder>(R.layout.layout_recommend_item) {
+    override val adapter = object : BaseQuickAdapter<RecommendRespBean, BaseViewHolder>(R.layout.recommend_layout_recommend_item) {
 
         override fun convert(helper: BaseViewHolder, item: RecommendRespBean) {
             Glide.with(viewContext).load(item.key.img.toGlideUrl).into(helper.getView(R.id.iv_recommend_img))
@@ -54,7 +53,7 @@ class RecommendListFragment : AppBaseRecycleFragment<Contract.HotRecommendContra
 
         }, recycleView)
         adapter.setLoadMoreView(object : LoadMoreView() {
-            override fun getLayoutId(): Int = R.layout.layout_load_reset
+            override fun getLayoutId(): Int = R.layout.recommend_layout_load_reset
 
             override fun getLoadingViewId(): Int = R.id.tv_end
 

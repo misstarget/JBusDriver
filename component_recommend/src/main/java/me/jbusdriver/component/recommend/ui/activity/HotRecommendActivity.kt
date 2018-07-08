@@ -3,17 +3,16 @@ package me.jbusdriver.component.recommend.ui.activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import kotlinx.android.synthetic.main.recommend_activity_hot_recommend.*
+import me.jbusdriver.base.common.BaseActivity
 import me.jbusdriver.component.recommend.R
 import me.jbusdriver.component.recommend.ui.fragment.RecommendListFragment
-import kotlinx.android.synthetic.main.activity_hot_recommend.*
-import me.jbusdriver.base.common.BaseActivity
-import me.jbusdriver.component.recommend.R.id.toolbar
 
 class HotRecommendActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_hot_recommend)
+        setContentView(R.layout.recommend_activity_hot_recommend)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         title = "热门推荐"

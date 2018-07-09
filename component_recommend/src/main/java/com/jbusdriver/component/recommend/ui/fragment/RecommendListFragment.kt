@@ -4,7 +4,6 @@ import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import com.billy.cc.core.component.CC
 import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
@@ -13,6 +12,8 @@ import com.jbusdriver.component.recommend.R
 import com.jbusdriver.component.recommend.mvp.bean.RecommendRespBean
 import com.jbusdriver.component.recommend.mvp.presenter.HotRecommendPresenterImpl
 import com.jbusdriver.component.recommend.ui.contract.Contract
+import kotlinx.android.synthetic.main.basic_layout_recycle.*
+import kotlinx.android.synthetic.main.basic_layout_swipe_recycle.view.*
 import me.jbusdriver.base.KLog
 import me.jbusdriver.base.common.AppBaseRecycleFragment
 import me.jbusdriver.base.common.toGlideUrl
@@ -30,7 +31,10 @@ class RecommendListFragment : AppBaseRecycleFragment<Contract.HotRecommendContra
 
     override val layoutId: Int = R.layout.basic_layout_swipe_recycle
     override val swipeView: SwipeRefreshLayout?  by lazy { rootViewWeakRef?.get()?.findViewById<SwipeRefreshLayout>(R.id.basic_sr_refresh) }
-    override val recycleView: RecyclerView by lazy { rootViewWeakRef?.get()?.findViewById<RecyclerView>(R.id.basic_rv_recycle) ?: error("not find RecyclerView")  }
+    override val recycleView: RecyclerView by lazy {
+        rootViewWeakRef?.get()?.findViewById<RecyclerView>(R.id.basic_rv_recycle)
+                ?: error("not find RecyclerView")
+    }
     override val layoutManager: RecyclerView.LayoutManager  by lazy { LinearLayoutManager(viewContext) }
 
     override val adapter = object : BaseQuickAdapter<RecommendRespBean, BaseViewHolder>(R.layout.layout_recommend_item) {
@@ -48,6 +52,9 @@ class RecommendListFragment : AppBaseRecycleFragment<Contract.HotRecommendContra
 
     override fun initWidget(rootView: View) {
         super.initWidget(rootView)
+        KLog.d("view ex $rootView ${rootViewWeakRef?.get()}")
+           KLog.d("view ex ${rootView.basic_sr_refresh}")
+           KLog.d("view ex $basic_rv_recycle")
         adapter.setOnLoadMoreListener({
             KLog.d("onLoadMore")
             mBasePresenter?.onLoadMore()

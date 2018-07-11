@@ -26,11 +26,8 @@ val GSON by lazy {
 }
 
 private val TOAST: Toast by lazy {
-    requireNotNull(JBusManager)
-    requireNotNull(JBusManager.manager)
-    requireNotNull(JBusManager.manager.firstOrNull())
-    requireNotNull(JBusManager.manager.firstOrNull()?.get())
-    Toast.makeText(JBusManager.manager.firstOrNull()?.get()?.applicationContext, "", Toast.LENGTH_LONG)
+
+    Toast.makeText(JBusManager.context, "", Toast.LENGTH_LONG)
 }
 
 fun Context.toast(str: String, duration: Int = Toast.LENGTH_LONG) {

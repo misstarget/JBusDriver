@@ -52,7 +52,7 @@
             android:name="me.jbusdriver.ui.activity.MovieDetailActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="me.jbusdriver.ui.activity.WatchLargeImageActivity"
+            android:name="me.jbusdriver.component.movie.detail.ui.activity.WatchLargeImageActivity"
             android:theme="@style/AppTheme.NoActionBar.TransparentStatusBar" />
         <activity
             android:name="me.jbusdriver.ui.activity.MovieListActivity"

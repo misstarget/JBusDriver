@@ -5,8 +5,8 @@ import io.reactivex.schedulers.Schedulers
 import me.jbusdriver.base.common.C
 import me.jbusdriver.mvp.MagnetPagerContract
 import me.jbusdriver.mvp.presenter.MagnetPagerPresenterImpl
-import me.jbusdriver.ui.data.AppConfiguration
-import me.jbusdriver.ui.data.magnet.MagnetLoaders
+import me.jbusdriver.base.data.AppConfiguration
+import me.jbusdriver.base.data.magnet.MagnetLoaders
 
 /**
  * Created by Administrator on 2017/7/17 0017.

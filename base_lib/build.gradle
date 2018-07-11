@@ -1,7 +1,6 @@
 apply from: rootProject.file("cc-settings.gradle")
 
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'//kapt3插件
 
 android {
@@ -23,7 +22,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
@@ -50,6 +51,9 @@ dependencies {
     api "com.afollestad.material-dialogs:core:${versions.material_dialogs_core}"
     api "com.github.CymChad:BaseRecyclerViewAdapterHelper:${versions.BaseRecyclerViewAdapterHelper}"
     api "com.gyf.barlibrary:barlibrary:${versions.immersionBar}"
+    api("com.xiaofeng.android:flowlayoutmanager:${versions.flowlayoutmanager}") {
+        exclude group: 'com.android.support'
+    }
 
     //okhttp
     api "com.squareup.okhttp3:okhttp:${versions.okhttp}"
@@ -82,6 +86,6 @@ dependencies {
 
     api "com.umeng.analytics:analytics:${versions.analytics}"
 
-    api "com.billy.android:cc:${versions.cc}"
+    //api "com.billy.android:cc:${versions.cc}"
 
 }

@@ -12,7 +12,6 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import jbusdriver.me.jbusdriver.R
-import kotlinx.android.synthetic.main.layout_menu_op_head.view.*
 import me.jbusdriver.base.KLog
 import me.jbusdriver.base.common.AppBaseRecycleFragment
 import me.jbusdriver.base.dpToPx
@@ -20,19 +19,19 @@ import me.jbusdriver.base.mvp.bean.Category
 import me.jbusdriver.base.mvp.bean.ILink
 import me.jbusdriver.base.mvp.bean.LinkCategory
 import me.jbusdriver.base.toast
-import me.jbusdriver.db.service.CategoryService
+import me.jbusdriver.base.db.service.CategoryService
 import me.jbusdriver.mvp.LinkCollectContract
 import me.jbusdriver.mvp.bean.CollectLinkWrapper
-import me.jbusdriver.mvp.bean.SearchLink
-import me.jbusdriver.mvp.bean.convertDBItem
-import me.jbusdriver.mvp.bean.des
-import me.jbusdriver.mvp.model.CollectModel
+import me.jbusdriver.base.mvp.bean.SearchLink
+import me.jbusdriver.base.mvp.bean.convertDBItem
+import me.jbusdriver.base.mvp.bean.des
+import me.jbusdriver.base.mvp.model.CollectModel
 import me.jbusdriver.mvp.presenter.LinkCollectPresenterImpl
 import me.jbusdriver.ui.activity.MovieListActivity
 import me.jbusdriver.ui.activity.SearchResultActivity
-import me.jbusdriver.ui.adapter.BaseAppAdapter
-import me.jbusdriver.ui.data.AppConfiguration
-import me.jbusdriver.ui.data.contextMenu.LinkMenu
+import me.jbusdriver.base.mvp.ui.adapter.BaseAppAdapter
+import me.jbusdriver.base.data.AppConfiguration
+import me.jbusdriver.base.data.contextMenu.LinkMenu
 import me.jbusdriver.ui.holder.CollectDirEditHolder
 
 class LinkCollectFragment : AppBaseRecycleFragment<LinkCollectContract.LinkCollectPresenter, LinkCollectContract.LinkCollectView, CollectLinkWrapper<ILink>>(), LinkCollectContract.LinkCollectView {

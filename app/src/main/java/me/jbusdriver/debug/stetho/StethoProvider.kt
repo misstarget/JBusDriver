@@ -7,7 +7,7 @@ import com.facebook.stetho.inspector.database.DatabaseFilesProvider
 import com.facebook.stetho.inspector.database.DefaultDatabaseConnectionProvider
 import com.facebook.stetho.inspector.database.SqliteDatabaseDriver
 import com.facebook.stetho.inspector.protocol.ChromeDevtoolsDomain
-import me.jbusdriver.db.DB
+import me.jbusdriver.base.db.DB
 import java.io.File
 
 

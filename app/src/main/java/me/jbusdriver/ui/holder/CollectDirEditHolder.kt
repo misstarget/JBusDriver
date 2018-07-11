@@ -15,8 +15,9 @@ import me.jbusdriver.base.KLog
 import me.jbusdriver.base.inflate
 import me.jbusdriver.base.mvp.bean.AllFirstParentDBCategoryGroup
 import me.jbusdriver.base.mvp.bean.Category
+import me.jbusdriver.base.mvp.ui.holder.BaseHolder
 import me.jbusdriver.base.toast
-import me.jbusdriver.ui.adapter.BaseAppAdapter
+import me.jbusdriver.base.mvp.ui.adapter.BaseAppAdapter
 
 /**
  * Created by Administrator on 2017/11/2 0002.

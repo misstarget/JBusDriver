@@ -1,0 +1,9 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <color android:color="@color/colorPrimary" />
+    </item>
+    <item
+        android:drawable="@drawable/basic_ic_laughing_man"
+        android:gravity="center"
+        />
+</layer-list>

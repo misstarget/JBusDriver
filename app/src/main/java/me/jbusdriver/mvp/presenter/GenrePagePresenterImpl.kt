@@ -10,7 +10,7 @@ import me.jbusdriver.base.CacheLoader
 import me.jbusdriver.base.SchedulersCompat
 import me.jbusdriver.base.http.JAVBusService
 import me.jbusdriver.mvp.GenrePageContract
-import me.jbusdriver.mvp.bean.Genre
+import me.jbusdriver.base.mvp.bean.Genre
 import me.jbusdriver.base.mvp.model.AbstractBaseModel
 import me.jbusdriver.base.mvp.model.BaseModel
 import me.jbusdriver.base.mvp.presenter.BasePresenterImpl

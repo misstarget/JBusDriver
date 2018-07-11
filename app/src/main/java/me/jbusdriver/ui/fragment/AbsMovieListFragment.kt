@@ -15,14 +15,14 @@ import me.jbusdriver.base.*
 import me.jbusdriver.base.common.C
 import me.jbusdriver.base.common.toGlideUrl
 import me.jbusdriver.base.mvp.bean.ILink
-import me.jbusdriver.mvp.bean.Movie
-import me.jbusdriver.mvp.bean.convertDBItem
-import me.jbusdriver.mvp.model.CollectModel
+import me.jbusdriver.base.mvp.bean.Movie
+import me.jbusdriver.base.mvp.bean.convertDBItem
+import me.jbusdriver.base.mvp.model.CollectModel
 import me.jbusdriver.ui.activity.MovieDetailActivity
-import me.jbusdriver.ui.adapter.BaseMultiItemAppAdapter
-import me.jbusdriver.ui.data.AppConfiguration
-import me.jbusdriver.ui.data.contextMenu.LinkMenu
-import me.jbusdriver.ui.data.enums.DataSourceType
+import me.jbusdriver.base.mvp.ui.adapter.BaseMultiItemAppAdapter
+import me.jbusdriver.base.data.AppConfiguration
+import me.jbusdriver.base.data.contextMenu.LinkMenu
+import me.jbusdriver.base.data.enums.DataSourceType
 
 
 abstract class AbsMovieListFragment : LinkableListFragment<Movie>() {
@@ -36,7 +36,8 @@ abstract class AbsMovieListFragment : LinkableListFragment<Movie>() {
 
      */
     override val type: DataSourceType by lazy {
-        arguments?.getSerializable(MOVIE_LIST_DATA_TYPE) as? DataSourceType ?: let {
+        arguments?.getSerializable(MOVIE_LIST_DATA_TYPE) as? DataSourceType
+                ?: let {
             (arguments?.getSerializable(C.BundleKey.Key_1) as? ILink)?.let { link ->
 
                 val path = link.link.urlPath
@@ -131,8 +132,8 @@ abstract class AbsMovieListFragment : LinkableListFragment<Movie>() {
                                 .setText(R.id.tv_movie_code, item.code)
 
 
-                        GlideApp.with(this@AbsMovieListFragment).load(item.imageUrl.toGlideUrl).placeholder(R.drawable.ic_place_holder)
-                                .error(R.drawable.ic_place_holder).centerCrop().into(DrawableImageViewTarget(holder.getView(R.id.iv_movie_img)))
+                        GlideApp.with(this@AbsMovieListFragment).load(item.imageUrl.toGlideUrl).placeholder(R.drawable.basic_ic_place_holder)
+                                .error(R.drawable.basic_ic_place_holder).centerCrop().into(DrawableImageViewTarget(holder.getView(R.id.iv_movie_img)))
 
 
                         with(holder.getView<LinearLayout>(R.id.ll_movie_hot)) {

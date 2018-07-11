@@ -4,11 +4,11 @@ import me.jbusdriver.base.mvp.BaseView
 import me.jbusdriver.base.mvp.bean.ILink
 import me.jbusdriver.base.mvp.bean.PageInfo
 import me.jbusdriver.base.mvp.presenter.BasePresenter
-import me.jbusdriver.mvp.bean.ActressInfo
-import me.jbusdriver.mvp.bean.Genre
-import me.jbusdriver.mvp.bean.Movie
+import me.jbusdriver.base.mvp.bean.ActressInfo
+import me.jbusdriver.base.mvp.bean.Genre
+import me.jbusdriver.base.mvp.bean.Movie
 import me.jbusdriver.mvp.presenter.BaseCollectPresenter
-import me.jbusdriver.ui.data.enums.DataSourceType
+import me.jbusdriver.base.data.enums.DataSourceType
 
 /**
  * Created by Administrator on 2017/4/9.
@@ -34,20 +34,7 @@ interface LinkListContract {
     }
 }
 
-interface MovieDetailContract {
-    interface MovieDetailView : BaseView {
-        val movie: Movie?
-        val url: String?
-        fun changeLikeIcon(likeCount:Int)
-//        fun addMagnet(t: List<Magnet>)
-//        fun initMagnetLoad()
-    }
 
-    interface MovieDetailPresenter : BasePresenter<MovieDetailView>, BasePresenter.RefreshPresenter {
-        fun loadDetail(url:String)
-        fun likeIt(movie:Movie,reason:String? = null)
-    }
-}
 
 interface MovieParseContract {
     interface MovieParseView : BaseView

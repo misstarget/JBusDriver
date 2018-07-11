@@ -7,7 +7,7 @@ import android.view.MenuInflater
 import jbusdriver.me.jbusdriver.R
 import me.jbusdriver.mvp.MineCollectContract
 import me.jbusdriver.mvp.presenter.MineCollectPresenterImpl
-import me.jbusdriver.ui.data.AppConfiguration
+import me.jbusdriver.base.data.AppConfiguration
 
 /**
  * since 1.1 remove info menu

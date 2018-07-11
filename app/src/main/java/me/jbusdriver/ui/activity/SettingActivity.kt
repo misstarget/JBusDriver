@@ -20,19 +20,16 @@ import io.reactivex.Flowable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
 import jbusdriver.me.jbusdriver.R
-import kotlinx.android.synthetic.main.activity_setting.*
-import kotlinx.android.synthetic.main.layout_collect_back_edit_item.view.*
-import kotlinx.android.synthetic.main.layout_menu_op_item.view.*
 import me.jbusdriver.base.*
 import me.jbusdriver.base.common.BaseActivity
 import me.jbusdriver.common.*
-import me.jbusdriver.db.service.LinkService
-import me.jbusdriver.mvp.bean.Expand_Type_Head
+import me.jbusdriver.base.db.service.LinkService
+import me.jbusdriver.base.mvp.bean.Expand_Type_Head
 import me.jbusdriver.mvp.bean.MenuOp
 import me.jbusdriver.mvp.bean.MenuOpHead
 import me.jbusdriver.ui.adapter.MenuOpAdapter
-import me.jbusdriver.ui.data.AppConfiguration
-import me.jbusdriver.ui.data.magnet.MagnetLoaders
+import me.jbusdriver.base.data.AppConfiguration
+import me.jbusdriver.base.data.magnet.MagnetLoaders
 import me.jbusdriver.ui.task.CollectService
 import java.io.File
 

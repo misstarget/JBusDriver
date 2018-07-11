@@ -1,4 +1,4 @@
-package me.jbusdriver.db
+package me.jbusdriver.base.db
 
 import android.content.Context
 import android.content.ContextWrapper

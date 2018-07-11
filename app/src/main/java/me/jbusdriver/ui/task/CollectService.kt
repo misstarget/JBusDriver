@@ -9,12 +9,12 @@ import com.umeng.analytics.MobclickAgent
 import me.jbusdriver.base.*
 import me.jbusdriver.base.mvp.bean.ILink
 import me.jbusdriver.common.JBus
-import me.jbusdriver.db.bean.LinkItem
-import me.jbusdriver.db.service.CategoryService
-import me.jbusdriver.db.service.LinkService
-import me.jbusdriver.mvp.bean.ActressInfo
-import me.jbusdriver.mvp.bean.Movie
-import me.jbusdriver.mvp.bean.convertDBItem
+import me.jbusdriver.base.db.bean.LinkItem
+import me.jbusdriver.base.db.service.CategoryService
+import me.jbusdriver.base.db.service.LinkService
+import me.jbusdriver.base.mvp.bean.ActressInfo
+import me.jbusdriver.base.mvp.bean.Movie
+import me.jbusdriver.base.mvp.bean.convertDBItem
 import java.io.File
 import java.lang.reflect.Type
 

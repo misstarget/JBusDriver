@@ -10,6 +10,8 @@ buildscript {
         maven { url "https://jitpack.io" }
     }
     dependencies {
+        classpath "com.billy.android:autoregister:${versions.autoregister}"
+
         classpath "com.android.tools.build:gradle:${versions.gradle}"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
         // tinkersupport插件, 其中lastest.release指拉取最新版本，也可以指定明确版本号，例如1.0.4
@@ -17,7 +19,7 @@ buildscript {
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
         //CC component
-        classpath "com.billy.android:autoregister:${versions.autoregister}"
+
 
     }
 }

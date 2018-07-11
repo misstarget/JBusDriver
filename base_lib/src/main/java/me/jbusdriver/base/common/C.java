@@ -9,7 +9,18 @@ import me.jbusdriver.base.ACache;
 public class C {
     public static class C_RECOMMEND {
 
-        public static final String OPEN_RECOMMEND = "recommend/open";
+        public static final String Open_Recommend = "recommend/open";
+        public static final String Recommend_Like_It = "recommend/like";
+
+        public static class KEYS {
+            public static final String Recommend_Like_Key = "recommend_like_key";
+            public static final String Recommend_Like_Reason = "recommend_like_reason";
+            public static final String Recommend_Like_Bean = "recommend_like_bean";
+        }
+
+        public static class VALUES {
+            public static final String Recommend_Count_Resout = "recommend_count";
+        }
     }
 
     public static class Cache {

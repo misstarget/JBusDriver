@@ -32,6 +32,7 @@ class App : Application() {
 
         }
         this.registerActivityLifecycleCallbacks(JBusManager)
+        JBusManager.setContext(this)
 
     }
 }

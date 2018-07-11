@@ -11,14 +11,13 @@ import me.jbusdriver.base.mvp.BaseView
 import me.jbusdriver.base.mvp.bean.*
 import me.jbusdriver.base.mvp.model.BaseModel
 import me.jbusdriver.base.mvp.presenter.AbstractRefreshLoadMorePresenterImpl
-import me.jbusdriver.db.bean.*
-import me.jbusdriver.db.service.CategoryService
-import me.jbusdriver.db.service.LinkService
+import me.jbusdriver.base.db.service.CategoryService
+import me.jbusdriver.base.db.service.LinkService
 import me.jbusdriver.mvp.ActressCollectContract
 import me.jbusdriver.mvp.MovieCollectContract
 import me.jbusdriver.mvp.bean.*
-import me.jbusdriver.mvp.model.CollectModel
-import me.jbusdriver.ui.data.AppConfiguration
+import me.jbusdriver.base.mvp.model.CollectModel
+import me.jbusdriver.base.data.AppConfiguration
 import org.jsoup.nodes.Document
 
 

@@ -9,8 +9,7 @@ object RecommendModel {
     private const val UID = "uid"
 
     private val likeCache by lazy {
-        ACache.get(JBusManager.manager.firstOrNull()?.get()
-                ?: error("must call after app init"), "like")
+        ACache.get(JBusManager.context, "like")
     }
 
     fun trimCache() {

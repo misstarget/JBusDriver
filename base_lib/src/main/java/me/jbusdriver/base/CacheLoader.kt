@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit
 object CacheLoader {
     private const val TAG = "CacheLoader"
     private val context by lazy {
-        JBusManager.manager.firstOrNull()?.get()?.applicationContext ?: error("not context")
+        JBusManager.context
     }
 
     private fun initMemCache(): LruCache<String, String> {

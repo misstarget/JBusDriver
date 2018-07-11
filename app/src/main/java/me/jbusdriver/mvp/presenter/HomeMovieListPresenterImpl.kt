@@ -9,10 +9,10 @@ import me.jbusdriver.base.mvp.bean.ILink
 import me.jbusdriver.base.mvp.bean.PageInfo
 import me.jbusdriver.base.mvp.model.AbstractBaseModel
 import me.jbusdriver.base.mvp.model.BaseModel
-import me.jbusdriver.mvp.bean.Movie
-import me.jbusdriver.mvp.bean.PageLink
-import me.jbusdriver.ui.data.AppConfiguration
-import me.jbusdriver.ui.data.enums.DataSourceType
+import me.jbusdriver.base.mvp.bean.Movie
+import me.jbusdriver.base.mvp.bean.PageLink
+import me.jbusdriver.base.data.AppConfiguration
+import me.jbusdriver.base.data.enums.DataSourceType
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 

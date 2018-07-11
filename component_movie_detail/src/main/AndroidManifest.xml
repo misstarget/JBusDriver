@@ -1,2 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="me.jbusdriver.component.movie.detail" />
+    package="me.jbusdriver.component.movie.detail">
+
+    <application>
+        <activity
+            android:name=".ui.activity.MovieDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+    </application>
+</manifest>

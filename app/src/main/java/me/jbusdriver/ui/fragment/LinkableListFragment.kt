@@ -16,7 +16,6 @@ import com.billy.cc.core.component.CC
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
 import jbusdriver.me.jbusdriver.R
-import kotlinx.android.synthetic.main.layout_seek_page.view.*
 import me.jbusdriver.base.KLog
 import me.jbusdriver.base.RxBus
 import me.jbusdriver.base.common.AppBaseRecycleFragment
@@ -25,9 +24,9 @@ import me.jbusdriver.base.inflate
 import me.jbusdriver.base.mvp.bean.PageInfo
 import me.jbusdriver.base.toast
 import me.jbusdriver.mvp.LinkListContract
-import me.jbusdriver.mvp.bean.PageChangeEvent
+import me.jbusdriver.base.mvp.bean.PageChangeEvent
 import me.jbusdriver.ui.activity.SearchResultActivity
-import me.jbusdriver.ui.data.AppConfiguration
+import me.jbusdriver.base.data.AppConfiguration
 
 abstract class LinkableListFragment<T> : AppBaseRecycleFragment<LinkListContract.LinkListPresenter, LinkListContract.LinkListView, T>(), LinkListContract.LinkListView {
 
@@ -115,7 +114,7 @@ abstract class LinkableListFragment<T> : AppBaseRecycleFragment<LinkListContract
             R.id.action_recommend -> {
                 KLog.d("action_recommend ${CC.hasComponent(C.C_RECOMMEND::class.java.name)}")
                 //call recommend todo
-                CC.obtainBuilder(C.C_RECOMMEND::class.java.name).setActionName(C.C_RECOMMEND.OPEN_RECOMMEND)
+                CC.obtainBuilder(C.C_RECOMMEND::class.java.name).setContext(viewContext).setActionName(C.C_RECOMMEND.Open_Recommend)
                         .build().callAsync { cc, result ->
                             KLog.d("call $result")
                         }

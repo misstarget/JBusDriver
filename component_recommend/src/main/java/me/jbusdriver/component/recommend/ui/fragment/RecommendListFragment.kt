@@ -8,16 +8,17 @@ import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.chad.library.adapter.base.loadmore.LoadMoreView
-import me.jbusdriver.component.recommend.R
-import me.jbusdriver.component.recommend.mvp.bean.RecommendRespBean
-import me.jbusdriver.component.recommend.mvp.presenter.HotRecommendPresenterImpl
-import me.jbusdriver.component.recommend.ui.contract.Contract
+import kotlinx.android.synthetic.main.basic_layout_swipe_recycle.*
 import me.jbusdriver.base.KLog
 import me.jbusdriver.base.common.AppBaseRecycleFragment
 import me.jbusdriver.base.common.toGlideUrl
 import me.jbusdriver.base.http.JAVBusService.Companion.defaultFastUrl
 import me.jbusdriver.base.urlHost
 import me.jbusdriver.base.urlPath
+import me.jbusdriver.component.recommend.R
+import me.jbusdriver.component.recommend.mvp.bean.RecommendRespBean
+import me.jbusdriver.component.recommend.mvp.presenter.HotRecommendPresenterImpl
+import me.jbusdriver.component.recommend.ui.contract.Contract
 
 
 /**
@@ -47,6 +48,7 @@ class RecommendListFragment : AppBaseRecycleFragment<Contract.HotRecommendContra
 
     override fun initWidget(rootView: View) {
         super.initWidget(rootView)
+        KLog.d(basic_sr_refresh)
         adapter.setOnLoadMoreListener({
             KLog.d("onLoadMore")
             mBasePresenter?.onLoadMore()

@@ -12,9 +12,9 @@ import me.jbusdriver.base.fromJson
 import me.jbusdriver.base.http.JAVBusService
 import me.jbusdriver.mvp.GenrePageContract
 import me.jbusdriver.mvp.GenrePageContract.GenrePagePresenter
-import me.jbusdriver.mvp.bean.Genre
+import me.jbusdriver.base.mvp.bean.Genre
 import me.jbusdriver.mvp.presenter.GenrePagePresenterImpl
-import me.jbusdriver.ui.data.enums.DataSourceType
+import me.jbusdriver.base.data.enums.DataSourceType
 
 /**
  * 类别分类

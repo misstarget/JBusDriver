@@ -14,8 +14,8 @@ import me.jbusdriver.base.SchedulersCompat
 import me.jbusdriver.base.mvp.presenter.BasePresenterImpl
 import me.jbusdriver.http.GitHub
 import me.jbusdriver.mvp.MainContract
-import me.jbusdriver.mvp.bean.NoticeBean
-import me.jbusdriver.mvp.bean.UpdateBean
+import me.jbusdriver.base.mvp.bean.NoticeBean
+import me.jbusdriver.base.mvp.bean.UpdateBean
 
 
 class MainPresenterImpl : BasePresenterImpl<MainContract.MainView>(), MainContract.MainPresenter {
@@ -36,7 +36,7 @@ class MainPresenterImpl : BasePresenterImpl<MainContract.MainView>(), MainContra
                 }
                 .retry(1)
                 .toFlowable()
-                .compose(SchedulersCompat.io<Pair<UpdateBean,NoticeBean?>>())
+                .compose(SchedulersCompat.io<Pair<UpdateBean, NoticeBean?>>())
                 .subscribeBy(onNext = {
                     mView?.showContent(it)
 

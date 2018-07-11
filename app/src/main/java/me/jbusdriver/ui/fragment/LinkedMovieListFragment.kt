@@ -17,15 +17,12 @@ import io.reactivex.Flowable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
 import jbusdriver.me.jbusdriver.R
-import kotlinx.android.synthetic.main.layout_actress_attr.view.*
-import kotlinx.android.synthetic.main.layout_load_all.view.*
 import me.jbusdriver.base.*
 import me.jbusdriver.base.common.C
 import me.jbusdriver.base.common.toGlideUrl
-import me.jbusdriver.base.mvp.bean.ILink
+import me.jbusdriver.base.mvp.bean.*
 import me.jbusdriver.mvp.LinkListContract
-import me.jbusdriver.mvp.bean.*
-import me.jbusdriver.mvp.model.CollectModel
+import me.jbusdriver.base.mvp.model.CollectModel
 import me.jbusdriver.mvp.model.RecommendModel
 import me.jbusdriver.mvp.presenter.LinkAbsPresenterImpl
 import me.jbusdriver.mvp.presenter.MovieLinkPresenterImpl

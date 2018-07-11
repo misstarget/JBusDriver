@@ -17,7 +17,7 @@ import me.jbusdriver.base.common.C
 import me.jbusdriver.base.mvp.bean.Magnet
 import me.jbusdriver.mvp.MagnetListContract
 import me.jbusdriver.mvp.presenter.MagnetListPresenterImpl
-import me.jbusdriver.ui.adapter.BaseAppAdapter
+import me.jbusdriver.base.mvp.ui.adapter.BaseAppAdapter
 import org.jsoup.Jsoup
 
 class MagnetListFragment : AppBaseRecycleFragment<MagnetListContract.MagnetListPresenter, MagnetListContract.MagnetListView, Magnet>(), MagnetListContract.MagnetListView {

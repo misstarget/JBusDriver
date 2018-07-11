@@ -33,7 +33,7 @@ const val MB = KB * 1024
 const val GB = MB * 1024
 const val TB = GB * 1024
 
-fun Long.formatFileSize(): String = Formatter.formatFileSize(JBusManager.manager.first().get(), this)
+fun Long.formatFileSize(): String = Formatter.formatFileSize(JBusManager.context, this)
 //endregion
 
 //region array map
@@ -46,7 +46,7 @@ fun <K, V> arrayMapof(): ArrayMap<K, V> = ArrayMap()
 fun Int.toColorInt() = getColor(this)
 
 private fun getColor(id: Int): Int {
-    val ctx = JBusManager.manager.firstOrNull()?.get()?.applicationContext ?: return -1
+    val ctx = JBusManager.context ?: return -1
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
         ctx.resources.getColor(id, null)
     } else ctx.resources.getColor(id)

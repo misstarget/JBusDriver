@@ -9,9 +9,9 @@
     <application
         android:name=".App"
         android:allowBackup="true"
-        android:icon="@drawable/ic_laughing_man"
+        android:icon="@drawable/basic_ic_laughing_man"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/ic_laughing_man"
+        android:roundIcon="@drawable/basic_ic_laughing_man"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity

@@ -17,24 +17,23 @@ import com.chad.library.adapter.base.BaseViewHolder
 import io.reactivex.Flowable
 import io.reactivex.rxkotlin.addTo
 import jbusdriver.me.jbusdriver.R
-import kotlinx.android.synthetic.main.layout_menu_op_head.view.*
 import me.jbusdriver.base.*
 import me.jbusdriver.base.common.AppBaseRecycleFragment
 import me.jbusdriver.base.common.toGlideUrl
 import me.jbusdriver.base.mvp.bean.ActressCategory
 import me.jbusdriver.base.mvp.bean.Category
-import me.jbusdriver.db.service.CategoryService
+import me.jbusdriver.base.db.service.CategoryService
 import me.jbusdriver.mvp.ActressCollectContract
-import me.jbusdriver.mvp.bean.ActressDBType
-import me.jbusdriver.mvp.bean.ActressInfo
+import me.jbusdriver.base.mvp.bean.ActressDBType
+import me.jbusdriver.base.mvp.bean.ActressInfo
 import me.jbusdriver.mvp.bean.CollectLinkWrapper
-import me.jbusdriver.mvp.bean.convertDBItem
-import me.jbusdriver.mvp.model.CollectModel
+import me.jbusdriver.base.mvp.bean.convertDBItem
+import me.jbusdriver.base.mvp.model.CollectModel
 import me.jbusdriver.mvp.presenter.ActressCollectPresenterImpl
 import me.jbusdriver.ui.activity.MovieListActivity
-import me.jbusdriver.ui.adapter.BaseAppAdapter
-import me.jbusdriver.ui.data.AppConfiguration
-import me.jbusdriver.ui.data.contextMenu.LinkMenu
+import me.jbusdriver.base.mvp.ui.adapter.BaseAppAdapter
+import me.jbusdriver.base.data.AppConfiguration
+import me.jbusdriver.base.data.contextMenu.LinkMenu
 import me.jbusdriver.ui.holder.CollectDirEditHolder
 import java.util.*
 
@@ -59,7 +58,7 @@ class ActressCollectFragment : AppBaseRecycleFragment<ActressCollectContract.Act
                         val actress = requireNotNull(item.linkBean)
 
                         GlideApp.with(holder.itemView.context).asBitmap().load(actress.avatar.toGlideUrl)
-                                .error(R.drawable.ic_nowprinting).into(object : BitmapImageViewTarget(holder.getView(R.id.iv_actress_avatar)) {
+                                .error(R.drawable.basic_ic_nowprinting).into(object : BitmapImageViewTarget(holder.getView(R.id.iv_actress_avatar)) {
                                     override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
                                         Flowable.just(resource).map {
                                             Palette.from(resource).generate()

@@ -133,9 +133,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
     implementation "com.xw.repo:bubbleseekbar:${versions.bubbleseekbar}-lite"
-    implementation("com.xiaofeng.android:flowlayoutmanager:${versions.flowlayoutmanager}") {
-        exclude group: 'com.android.support'
-    }
+
 
     implementation project(':base_lib')
 

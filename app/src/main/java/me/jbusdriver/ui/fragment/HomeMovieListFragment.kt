@@ -3,9 +3,9 @@ package me.jbusdriver.ui.fragment
 import android.os.Bundle
 import me.jbusdriver.base.http.JAVBusService
 import me.jbusdriver.mvp.LinkListContract
-import me.jbusdriver.mvp.bean.PageLink
+import me.jbusdriver.base.mvp.bean.PageLink
 import me.jbusdriver.mvp.presenter.HomeMovieListPresenterImpl
-import me.jbusdriver.ui.data.enums.DataSourceType
+import me.jbusdriver.base.data.enums.DataSourceType
 
 
 /**

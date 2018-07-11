@@ -14,15 +14,14 @@ import jbusdriver.me.jbusdriver.R
 import me.jbusdriver.base.*
 import me.jbusdriver.base.common.C
 import me.jbusdriver.base.http.JAVBusService
-import me.jbusdriver.base.mvp.bean.ILink
-import me.jbusdriver.mvp.bean.*
-import me.jbusdriver.mvp.model.CollectModel
+import me.jbusdriver.base.mvp.bean.*
+import me.jbusdriver.base.mvp.model.CollectModel
 import me.jbusdriver.mvp.presenter.ActressLinkPresenterImpl
 import me.jbusdriver.mvp.presenter.LinkAbsPresenterImpl
 import me.jbusdriver.ui.activity.SearchResultActivity
 import me.jbusdriver.ui.adapter.ActressInfoAdapter
-import me.jbusdriver.ui.data.AppConfiguration
-import me.jbusdriver.ui.data.enums.DataSourceType
+import me.jbusdriver.base.data.AppConfiguration
+import me.jbusdriver.base.data.enums.DataSourceType
 
 class ActressListFragment : LinkableListFragment<ActressInfo>() {
 
@@ -34,7 +33,8 @@ class ActressListFragment : LinkableListFragment<ActressInfo>() {
     }
 
     override val type: DataSourceType by lazy {
-        arguments?.getSerializable(ACTRESS_LIST_DATA_TYPE) as? DataSourceType ?: let {
+        arguments?.getSerializable(ACTRESS_LIST_DATA_TYPE) as? DataSourceType
+                ?: let {
             (arguments?.getSerializable(C.BundleKey.Key_1) as? ILink)?.let { link ->
                 val path = link.link.urlPath
                 KLog.d("link data urlPath :$path ")

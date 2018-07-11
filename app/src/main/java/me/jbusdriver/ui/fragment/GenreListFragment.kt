@@ -11,7 +11,7 @@ import me.jbusdriver.base.common.C
 import me.jbusdriver.base.fromJson
 import me.jbusdriver.base.toJsonString
 import me.jbusdriver.mvp.GenreListContract
-import me.jbusdriver.mvp.bean.Genre
+import me.jbusdriver.base.mvp.bean.Genre
 import me.jbusdriver.mvp.presenter.GenreListPresenterImpl
 import me.jbusdriver.ui.adapter.GenreAdapter
 

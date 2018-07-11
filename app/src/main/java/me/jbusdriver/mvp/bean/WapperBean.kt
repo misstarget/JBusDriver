@@ -3,7 +3,7 @@ package me.jbusdriver.mvp.bean
 import com.chad.library.adapter.base.entity.AbstractExpandableItem
 import me.jbusdriver.base.mvp.bean.Category
 import me.jbusdriver.base.mvp.bean.ICollectCategory
-import me.jbusdriver.db.service.CategoryService
+import me.jbusdriver.base.db.service.CategoryService
 
 /**
  * Created by Administrator on 2017/9/26 0026.

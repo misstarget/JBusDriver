@@ -14,15 +14,10 @@ import jbusdriver.me.jbusdriver.R
 import me.jbusdriver.base.GlideApp
 import me.jbusdriver.base.common.AppBaseRecycleFragment
 import me.jbusdriver.base.common.toGlideUrl
-import me.jbusdriver.base.mvp.bean.ILink
-import me.jbusdriver.db.bean.History
+import me.jbusdriver.base.mvp.bean.*
 import me.jbusdriver.mvp.HistoryContract
-import me.jbusdriver.mvp.bean.ActressInfo
-import me.jbusdriver.mvp.bean.Movie
-import me.jbusdriver.mvp.bean.SearchLink
-import me.jbusdriver.mvp.bean.des
 import me.jbusdriver.mvp.presenter.HistoryPresenterImpl
-import me.jbusdriver.ui.adapter.BaseAppAdapter
+import me.jbusdriver.base.mvp.ui.adapter.BaseAppAdapter
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -89,7 +84,17 @@ class HistoryFragment : AppBaseRecycleFragment<HistoryContract.HistoryPresenter,
 
         }.apply {
             setOnItemClickListener { _, view, position ->
-                data.getOrNull(position)?.move(view.context)
+                /**
+                 *   when (type) {
+                1 -> MovieDetailActivity.start(context, getLinkItem() as Movie, true)
+                in 2..6 -> MovieListActivity.reloadFromHistory(context, this)
+                else -> JBusManager.manager.firstOrNull()?.get()?.toast("没有可以跳转的界面")
+                }
+
+
+                todo
+                 */
+                //data.getOrNull(position)?.move(view.context)
             }
         }
 

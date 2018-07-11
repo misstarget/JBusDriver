@@ -8,12 +8,12 @@ import me.jbusdriver.base.mvp.bean.PageInfo
 import me.jbusdriver.base.mvp.bean.ResultPageBean
 import me.jbusdriver.base.mvp.model.BaseModel
 import me.jbusdriver.base.mvp.presenter.AbstractRefreshLoadMorePresenterImpl
-import me.jbusdriver.db.bean.History
-import me.jbusdriver.db.service.HistoryService
+import me.jbusdriver.base.db.bean.History
+import me.jbusdriver.base.db.service.HistoryService
 import me.jbusdriver.mvp.LinkListContract
-import me.jbusdriver.mvp.bean.DBtype
-import me.jbusdriver.mvp.bean.PageLink
-import me.jbusdriver.ui.data.AppConfiguration
+import me.jbusdriver.base.mvp.bean.DBtype
+import me.jbusdriver.base.mvp.bean.PageLink
+import me.jbusdriver.base.data.AppConfiguration
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import java.util.*

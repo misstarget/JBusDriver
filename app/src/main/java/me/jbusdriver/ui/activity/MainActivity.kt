@@ -22,14 +22,17 @@ import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import jbusdriver.me.jbusdriver.BuildConfig
 import jbusdriver.me.jbusdriver.R
-import kotlinx.android.synthetic.main.nav_header_main.view.*
 import me.jbusdriver.base.*
 import me.jbusdriver.base.common.AppBaseActivity
 import me.jbusdriver.base.http.JAVBusService.Companion.JBusServices
+import me.jbusdriver.base.mvp.bean.NoticeBean
+import me.jbusdriver.base.mvp.bean.UpdateBean
 import me.jbusdriver.mvp.MainContract
 import me.jbusdriver.mvp.bean.*
 import me.jbusdriver.mvp.presenter.MainPresenterImpl
-import me.jbusdriver.ui.data.AppConfiguration
+import me.jbusdriver.base.data.AppConfiguration
+import me.jbusdriver.base.mvp.bean.CategoryChangeEvent
+import me.jbusdriver.base.mvp.bean.MenuChangeEvent
 import java.util.concurrent.TimeUnit
 
 class MainActivity : AppBaseActivity<MainContract.MainPresenter, MainContract.MainView>(), NavigationView.OnNavigationItemSelectedListener, MainContract.MainView {

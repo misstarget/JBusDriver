@@ -30,7 +30,7 @@ class MagnetListFragment : AppBaseRecycleFragment<MagnetListContract.MagnetListP
     override fun createPresenter() = MagnetListPresenterImpl(magnetLoaderKey, keyword)
 
     override val layoutId: Int = R.layout.basic_layout_swipe_recycle
-    override val swipeView: SwipeRefreshLayout? get() = findView(R.id.basic_sr_refresh)
+    override fun getSwipeView(): SwipeRefreshLayout? = findView(R.id.basic_sr_refresh)
     override val recycleView: RecyclerView get() = findView(R.id.basic_rv_recycle)
     override val layoutManager: RecyclerView.LayoutManager  by lazy { LinearLayoutManager(viewContext) }
 

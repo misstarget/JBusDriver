@@ -36,7 +36,7 @@ import me.jbusdriver.ui.holder.CollectDirEditHolder
 
 class LinkCollectFragment : AppBaseRecycleFragment<LinkCollectContract.LinkCollectPresenter, LinkCollectContract.LinkCollectView, CollectLinkWrapper<ILink>>(), LinkCollectContract.LinkCollectView {
 
-    override val swipeView: SwipeRefreshLayout? get() = findView(R.id.basic_sr_refresh)
+    override fun getSwipeView(): SwipeRefreshLayout? = findView(R.id.basic_sr_refresh)
     override val recycleView: RecyclerView get() = findView(R.id.basic_rv_recycle)
     override val layoutManager: RecyclerView.LayoutManager by lazy { LinearLayoutManager(viewContext) }
     override val adapter: BaseQuickAdapter<CollectLinkWrapper<ILink>, in BaseViewHolder> by lazy {

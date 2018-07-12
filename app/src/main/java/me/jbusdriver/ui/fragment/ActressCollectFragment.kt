@@ -41,7 +41,7 @@ import java.util.*
 class ActressCollectFragment : AppBaseRecycleFragment<ActressCollectContract.ActressCollectPresenter, ActressCollectContract.ActressCollectView, CollectLinkWrapper<ActressInfo>>(), ActressCollectContract.ActressCollectView {
 
 
-    override val swipeView: SwipeRefreshLayout? get() = findView(R.id.basic_sr_refresh)
+    override fun getSwipeView(): SwipeRefreshLayout? = findView(R.id.basic_sr_refresh)
     override val recycleView: RecyclerView get() = findView(R.id.basic_rv_recycle)
     override val layoutManager: RecyclerView.LayoutManager by lazy {
         StaggeredGridLayoutManager(viewContext.spanCount, OrientationHelper.VERTICAL)

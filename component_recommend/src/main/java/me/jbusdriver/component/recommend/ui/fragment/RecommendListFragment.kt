@@ -8,24 +8,24 @@ import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.chad.library.adapter.base.loadmore.LoadMoreView
-import com.jbusdriver.component.recommend.R
-import com.jbusdriver.component.recommend.mvp.bean.RecommendRespBean
-import com.jbusdriver.component.recommend.mvp.presenter.HotRecommendPresenterImpl
-import com.jbusdriver.component.recommend.ui.contract.Contract
 import kotlinx.android.synthetic.main.basic_layout_recycle.*
-import kotlinx.android.synthetic.main.basic_layout_swipe_recycle.view.*
 import me.jbusdriver.base.KLog
 import me.jbusdriver.base.common.AppBaseRecycleFragment
 import me.jbusdriver.base.common.toGlideUrl
 import me.jbusdriver.base.http.JAVBusService.Companion.defaultFastUrl
 import me.jbusdriver.base.urlHost
 import me.jbusdriver.base.urlPath
+import me.jbusdriver.component.recommend.R
+import me.jbusdriver.component.recommend.mvp.bean.RecommendRespBean
+import me.jbusdriver.component.recommend.mvp.presenter.HotRecommendPresenterImpl
+import me.jbusdriver.component.recommend.ui.contract.Contract.HotRecommendContract
+import me.jbusdriver.component.recommend.ui.contract.Contract.HotRecommendContract.HotRecommendView
 
 
 /**
  * Created by Administrator on 2017/7/30.
  */
-class RecommendListFragment : AppBaseRecycleFragment<Contract.HotRecommendContract.HotRecommendPresenter, Contract.HotRecommendContract.HotRecommendView, RecommendRespBean>(), Contract.HotRecommendContract.HotRecommendView {
+class RecommendListFragment : AppBaseRecycleFragment<HotRecommendContract.HotRecommendPresenter, HotRecommendView, RecommendRespBean>(), HotRecommendView {
 
     override fun createPresenter() = HotRecommendPresenterImpl()
 
@@ -37,7 +37,7 @@ class RecommendListFragment : AppBaseRecycleFragment<Contract.HotRecommendContra
     }
     override val layoutManager: RecyclerView.LayoutManager  by lazy { LinearLayoutManager(viewContext) }
 
-    override val adapter = object : BaseQuickAdapter<RecommendRespBean, BaseViewHolder>(R.layout.layout_recommend_item) {
+    override val adapter = object : BaseQuickAdapter<RecommendRespBean, BaseViewHolder>(R.layout.recommend_layout_recommend_item) {
 
         override fun convert(helper: BaseViewHolder, item: RecommendRespBean) {
             Glide.with(viewContext).load(item.key.img.toGlideUrl).into(helper.getView(R.id.iv_recommend_img))
@@ -53,15 +53,16 @@ class RecommendListFragment : AppBaseRecycleFragment<Contract.HotRecommendContra
     override fun initWidget(rootView: View) {
         super.initWidget(rootView)
         KLog.d("view ex $rootView ${rootViewWeakRef?.get()}")
-           KLog.d("view ex ${rootView.basic_sr_refresh}")
-           KLog.d("view ex $basic_rv_recycle")
+//        KLog.d("view ex ${rootView.basic_sr_refresh}")
+        KLog.d("view ex $basic_rv_recycle")
+
         adapter.setOnLoadMoreListener({
             KLog.d("onLoadMore")
             mBasePresenter?.onLoadMore()
 
         }, recycleView)
         adapter.setLoadMoreView(object : LoadMoreView() {
-            override fun getLayoutId(): Int = R.layout.layout_load_reset
+            override fun getLayoutId(): Int = R.layout.recommend_layout_load_reset
 
             override fun getLoadingViewId(): Int = R.id.tv_end
 

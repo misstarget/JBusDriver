@@ -33,8 +33,8 @@ class MainActivity : AppCompatActivity() {
         recommend_btn_like_it.setOnClickListener {
 
             CC.obtainBuilder(C.C_RECOMMEND::class.java.name).setContext(this).setActionName(C.C_RECOMMEND.Recommend_Like_It)
-                    .addParam(C.C_RECOMMEND.KEYS.Recommend_Like_Key, "abc")
-                    .addParam(C.C_RECOMMEND.KEYS.Recommend_Like_Bean, RecommendBean("hello", "img", "abc"))
+                    .addParam("key", "abc")
+                    .addParam("bean", RecommendBean("hello", "img", "abc"))
                     .build().callAsync { cc, result ->
                         KLog.d("call $result")
                         postMain {

@@ -7,6 +7,7 @@ import kotlinx.android.synthetic.main.layout_detail_genres.view.*
 import me.jbusdriver.base.inflate
 import me.jbusdriver.base.mvp.bean.Genre
 import me.jbusdriver.base.mvp.ui.holder.BaseHolder
+import me.jbusdriver.component.movie.detail.R
 import me.jbusdriver.component.movie.detail.ui.adapter.GenreAdapter
 
 /**

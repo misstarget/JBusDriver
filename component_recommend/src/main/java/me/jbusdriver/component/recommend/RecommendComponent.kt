@@ -23,9 +23,9 @@ class RecommendComponent : IComponent {
                 cc.openActivity<HotRecommendActivity>()
             }
             C.C_RECOMMEND.Recommend_Like_It -> {
-                val likeKey = cc.getParamItem<String?>(C.C_RECOMMEND.KEYS.Recommend_Like_Key)
-                val reason = cc.getParamItem<String?>(C.C_RECOMMEND.KEYS.Recommend_Like_Reason)
-                val recommendBean = cc.getParamItem<RecommendBean?>(C.C_RECOMMEND.KEYS.Recommend_Like_Bean)
+                val likeKey = cc.getParamItem<String?>("key")
+                val reason = cc.getParamItem<String?>("reason")
+                val recommendBean = cc.getParamItem<RecommendBean?>("bean")
                 val ctx = cc.context
                 KLog.d("cc action :${cc.actionName} , params :$likeKey , $reason  , $recommendBean")
                 if (likeKey == null) {
@@ -77,7 +77,7 @@ class RecommendComponent : IComponent {
                 }.addUserCase().takeUntil { cc.isStopped }.compose(SchedulersCompat.io()).subscribeWith(object : SimpleSubscriber<Int>() {
                     override fun onNext(t: Int) {
                         super.onNext(t)
-                        CC.sendCCResult(cc.callId, CCResult.success(C.C_RECOMMEND.VALUES.Recommend_Count_Resout, t))
+                        CC.sendCCResult(cc.callId, CCResult.success("recommend_count", t))
                     }
 
                     override fun onError(e: Throwable) {

@@ -241,10 +241,8 @@ abstract class AppBaseFragment<P : BasePresenter<V>, V> : BaseFragment(), Loader
 
     private val viewCache by lazy { arrayMapof<Int, View>() }
     @Throws
-    protected fun <T : View> findView(id: Int): T =
+    protected fun <T : View> findView(id: Int): T? =
             viewCache.getOrPut(id) {
                 rootViewWeakRef?.get()?.findViewById(id) as? T
-            } as? T ?: error("not find view for $id")
-
-
+            } as? T
 }

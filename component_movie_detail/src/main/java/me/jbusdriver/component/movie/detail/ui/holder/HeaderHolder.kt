@@ -20,6 +20,7 @@ import me.jbusdriver.base.mvp.bean.des
 import me.jbusdriver.base.mvp.model.CollectModel
 import me.jbusdriver.base.mvp.ui.adapter.BaseAppAdapter
 import me.jbusdriver.base.mvp.ui.holder.BaseHolder
+import me.jbusdriver.component.movie.detail.R
 
 
 /**

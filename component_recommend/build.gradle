@@ -4,10 +4,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'//kapt3插件
 
-androidExtensions {
-    experimental = true
-}
-
 android {
 
     compileSdkVersion versions.compileSdk

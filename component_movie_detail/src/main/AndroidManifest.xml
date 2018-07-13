@@ -3,7 +3,7 @@
 
     <application>
         <activity
-            android:name=".ui.activity.MovieDetailActivity"
+            android:name=".ui.activity.WatchLargeImageActivity"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 </manifest>

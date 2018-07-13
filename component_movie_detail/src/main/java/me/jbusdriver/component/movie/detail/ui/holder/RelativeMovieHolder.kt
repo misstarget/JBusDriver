@@ -21,7 +21,10 @@ import me.jbusdriver.base.mvp.bean.convertDBItem
 import me.jbusdriver.base.mvp.model.CollectModel
 import me.jbusdriver.base.mvp.ui.adapter.BaseAppAdapter
 import me.jbusdriver.base.mvp.ui.holder.BaseHolder
+import me.jbusdriver.component.movie.detail.R
+import me.jbusdriver.component.movie.detail.R.id.rv_recycle_relative_movies
 import java.util.*
+
 
 /**
  * Created by Administrator on 2017/5/9 0009.

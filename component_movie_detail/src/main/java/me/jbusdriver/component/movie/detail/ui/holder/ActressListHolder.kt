@@ -8,6 +8,7 @@ import me.jbusdriver.base.KLog
 import me.jbusdriver.base.inflate
 import me.jbusdriver.base.mvp.bean.ActressInfo
 import me.jbusdriver.base.mvp.ui.holder.BaseHolder
+import me.jbusdriver.component.movie.detail.R
 import me.jbusdriver.component.movie.detail.ui.adapter.ActressInfoAdapter
 
 /**

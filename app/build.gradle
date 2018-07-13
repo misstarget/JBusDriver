@@ -2,7 +2,7 @@ ext.mainApp = true //设置为true，表示此module为主app module，一直以
 //注意：最好放在build.gradle中代码的第一行
 apply from: rootProject.file("cc-settings.gradle")
 
-println(ext.runAsApp)
+println("ext.runAsApp : " + ext.runAsApp)
 
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
@@ -152,6 +152,7 @@ dependencies {
 
     //components
     addComponent 'component_recommend'
+    addComponent 'component_movie_detail'
 }
 
 configurations.all { config ->

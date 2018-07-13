@@ -3,7 +3,7 @@ package me.jbusdriver.component.recommend.ui.activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import com.jbusdriver.component.recommend.ui.fragment.RecommendListFragment
+import me.jbusdriver.component.recommend.ui.fragment.RecommendListFragment
 import kotlinx.android.synthetic.main.recommend_activity_hot_recommend.*
 import me.jbusdriver.base.common.BaseActivity
 import me.jbusdriver.component.recommend.R

@@ -1,4 +1,4 @@
-package me.jbusdriver.component.recommend
+package me.jbusdriver.component.movie.detail
 
 import android.app.Application
 import com.billy.cc.core.component.CC
@@ -7,7 +7,7 @@ import com.orhanobut.logger.Logger
 import com.orhanobut.logger.PrettyFormatStrategy
 import me.jbusdriver.base.JBusManager
 
-class App : Application() {
+class DetailApp : Application() {
 
     override fun onCreate() {
         super.onCreate()

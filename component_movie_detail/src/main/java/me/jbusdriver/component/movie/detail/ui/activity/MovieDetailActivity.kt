@@ -28,6 +28,7 @@ import me.jbusdriver.base.mvp.bean.MovieDetail
 import me.jbusdriver.base.mvp.bean.convertDBItem
 import me.jbusdriver.base.mvp.bean.des
 import me.jbusdriver.base.mvp.model.CollectModel
+import me.jbusdriver.component.movie.detail.R
 import me.jbusdriver.component.movie.detail.mvp.MovieDetailContract
 import me.jbusdriver.component.movie.detail.mvp.presenter.MovieDetailPresenterImpl
 import me.jbusdriver.component.movie.detail.ui.holder.*
@@ -53,7 +54,7 @@ class MovieDetailActivity : AppBaseActivity<MovieDetailContract.MovieDetailPrese
         super.onCreate(savedInstanceState)
         val toolbar = findViewById<Toolbar>(R.id.detail_toolbar)
         setSupportActionBar(toolbar)
-        val fab = findViewById<FloatingActionButton>(R.id.fab)
+        val fab = findViewById<FloatingActionButton>(R.id.detail_fab_like)
         fab.setOnClickListener {
             if (movie != null) {
                 MaterialDialog.Builder(it.context).title("推荐这部影片")
@@ -248,7 +249,7 @@ class MovieDetailActivity : AppBaseActivity<MovieDetailContract.MovieDetailPrese
 
     override fun changeLikeIcon(likeCount: Int) {
         KLog.d("changeLikeIcon :$likeCount")
-        findViewById<FloatingActionButton>(R.id.fab)?.apply {
+        findViewById<FloatingActionButton>(R.id.detail_fab_like)?.apply {
             this.setImageDrawable(resources.getDrawable(R.drawable.ic_love_sel))
             DrawableCompat.setTint(this.drawable,
                     ColorUtils.blendARGB(R.color.white.toColorInt(), Color.parseColor("#e91e63"), likeCount / 3f))

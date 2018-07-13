@@ -13,6 +13,7 @@ import me.jbusdriver.base.mvp.bean.convertDBItem
 import me.jbusdriver.base.mvp.bean.des
 import me.jbusdriver.base.mvp.model.CollectModel
 import me.jbusdriver.base.mvp.ui.adapter.BaseAppAdapter
+import me.jbusdriver.component.movie.detail.R
 
 /**
  * Created by Administrator on 2017/7/30.

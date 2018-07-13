@@ -1,8 +1,8 @@
 package me.jbusdriver.component.movie.detail.ui.activity
 
 import android.os.Bundle
-import me.jbusdriver.base.R
 import me.jbusdriver.base.common.BaseActivity
+import me.jbusdriver.component.movie.detail.R
 
 
 class WatchLargeImageActivity : BaseActivity() {

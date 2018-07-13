@@ -1,4 +1,4 @@
-package me.jbusdriver.ui.widget;
+package me.jbusdriver.component.movie.detail.ui;
 
 import android.content.Context;
 import android.util.AttributeSet;

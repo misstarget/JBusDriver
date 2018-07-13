@@ -16,6 +16,7 @@ import me.jbusdriver.base.inflate
 import me.jbusdriver.base.mvp.bean.ImageSample
 import me.jbusdriver.base.mvp.ui.adapter.BaseAppAdapter
 import me.jbusdriver.base.mvp.ui.holder.BaseHolder
+import me.jbusdriver.component.movie.detail.R
 import me.jbusdriver.component.movie.detail.ui.adapter.GridSpacingItemDecoration
 
 

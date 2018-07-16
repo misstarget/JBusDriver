@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="me.jbusdriver.component.recommend">
+    package="me.jbusdriver.component.image.browser">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:name=".RecommendApp"
+        android:name=".ImageBrowserApp"
         android:allowBackup="true"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".ui.activity.HotRecommendActivity"></activity>
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.activity.WatchLargeImageActivity"/>
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

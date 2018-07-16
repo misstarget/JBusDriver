@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
                     .build().callAsync { cc, result ->
                         KLog.d("call $result")
                         postMain {
-                            recommend_tv_info.text = cc.callId + "\r\n" + result.toString()
+                            recommend_tv_info.text = "$cc \r\n $result"
                         }
                     }
         }
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
                     .build().callAsync { cc, result ->
                         KLog.d("call $result")
                         postMain {
-                            recommend_tv_info.text = cc.callId + "\r\n" + result.toString()
+                            recommend_tv_info.text = "$cc \r\n $result"
                         }
                     }
         }

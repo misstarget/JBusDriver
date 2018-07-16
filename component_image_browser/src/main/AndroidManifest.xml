@@ -1,0 +1,12 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="me.jbusdriver.component.image.browser" >
+
+
+    <application>
+        <activity
+            android:name=".ui.activity.WatchLargeImageActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+    </application>
+</manifest>

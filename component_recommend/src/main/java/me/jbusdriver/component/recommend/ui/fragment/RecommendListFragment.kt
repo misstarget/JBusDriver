@@ -38,10 +38,10 @@ class RecommendListFragment : AppBaseRecycleFragment<HotRecommendContract.HotRec
     override val adapter = object : BaseQuickAdapter<RecommendRespBean, BaseViewHolder>(R.layout.recommend_layout_recommend_item) {
 
         override fun convert(helper: BaseViewHolder, item: RecommendRespBean) {
-            Glide.with(viewContext).load(item.key.img.toGlideUrl).into(helper.getView(R.id.iv_recommend_img))
-            helper.setText(R.id.tv_recommend_title, item.key.name)
-                    .setText(R.id.tv_reason, if (item.reason?.isNotBlank() == true) "推荐理由：${item.reason}" else "")
-                    .setText(R.id.tv_recommend_score, item.score.toString())
+            Glide.with(viewContext).load(item.key.img.toGlideUrl).into(helper.getView(R.id.recommend_iv_img))
+            helper.setText(R.id.recommend_tv_title, item.key.name)
+                    .setText(R.id.recommend_tv_reason, if (item.reason?.isNotBlank() == true) "推荐理由：${item.reason}" else "")
+                    .setText(R.id.recommend_tv_score, item.score.toString())
 
 
         }
@@ -58,11 +58,11 @@ class RecommendListFragment : AppBaseRecycleFragment<HotRecommendContract.HotRec
         adapter.setLoadMoreView(object : LoadMoreView() {
             override fun getLayoutId(): Int = R.layout.recommend_layout_load_reset
 
-            override fun getLoadingViewId(): Int = R.id.tv_end
+            override fun getLoadingViewId(): Int = R.id.recommend_tv_end
 
-            override fun getLoadEndViewId(): Int = R.id.tv_end
+            override fun getLoadEndViewId(): Int = R.id.recommend_tv_end
 
-            override fun getLoadFailViewId(): Int = R.id.tv_end
+            override fun getLoadFailViewId(): Int = R.id.recommend_tv_end
         })
         adapter.setOnItemClickListener { _, view, position ->
             adapter.getItem(position)?.let {

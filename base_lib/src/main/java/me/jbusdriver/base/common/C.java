@@ -7,9 +7,17 @@ import me.jbusdriver.base.ACache;
  */
 
 public class C {
+
+    //推荐component
     public static class C_RECOMMEND {
         public static final String Open_Recommend = "recommend/open";
         public static final String Recommend_Like_It = "recommend/like";
+    }
+
+    //推荐component
+    public static class C_IMAGE_BROWSER {
+        public static final String Browser_Images = "browser/images";
+
     }
 
     public static class Cache {

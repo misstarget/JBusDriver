@@ -7,15 +7,11 @@
     android:orientation="vertical">
 
 
-    <me.jbusdriver.ui.widget.MultiTouchZoomableImageView
-        android:id="@+id/mziv_image_large"
+    <com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/pv_image_large"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
-        tools:background="@color/cardview_dark_background"
-        tools:src="@mipmap/ic_launcher" />
+        tools:background="@color/cardview_dark_background" />
 
     <me.zhanghai.android.materialprogressbar.MaterialProgressBar
         android:id="@+id/pb_hor_progress"
@@ -24,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="top"
         android:indeterminate="true"
+        app:mpb_progressStyle="horizontal"
         app:mpb_progressTint="@color/colorAccent"
-        app:mpb_setBothDrawables="true"
-        app:mpb_progressStyle="horizontal" />
+        app:mpb_setBothDrawables="true" />
 </FrameLayout>

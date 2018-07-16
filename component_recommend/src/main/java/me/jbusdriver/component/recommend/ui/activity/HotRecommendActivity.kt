@@ -13,7 +13,7 @@ class HotRecommendActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.recommend_activity_hot_recommend)
-        setSupportActionBar(toolbar)
+        setSupportActionBar(recommend_toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         title = "热门推荐"
 

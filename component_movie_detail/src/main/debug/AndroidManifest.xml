@@ -18,8 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
-            android:name=".ui.activity.WatchLargeImageActivity"
+            android:name=".ui.activity.MovieDetailActivity"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 

@@ -6,6 +6,7 @@ import android.support.v7.graphics.Palette
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.afollestad.materialdialogs.MaterialDialog
+import com.billy.cc.core.component.CC
 import com.bumptech.glide.request.target.BitmapImageViewTarget
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
@@ -13,6 +14,7 @@ import io.reactivex.Flowable
 import io.reactivex.rxkotlin.addTo
 import kotlinx.android.synthetic.main.layout_detail_relative_movies.view.*
 import me.jbusdriver.base.*
+import me.jbusdriver.base.common.C
 import me.jbusdriver.base.common.toGlideUrl
 import me.jbusdriver.base.data.AppConfiguration
 import me.jbusdriver.base.data.contextMenu.LinkMenu
@@ -40,8 +42,13 @@ class RelativeMovieHolder(context: Context) : BaseHolder(context) {
                 relativeAdapter.setOnItemClickListener { _, v, position ->
                     relativeAdapter.data.getOrNull(position)?.let {
                         KLog.d("relative  : $it")
-                        // todo
-//                        MovieDetailActivity.start(v.context, it)
+                        CC.obtainBuilder(C.C_MOVIE_DETAIL::class.java.name)
+                                .setActionName(C.C_MOVIE_DETAIL.Open_Detail)
+                                .addParam("movie_bean", it)
+                                .setTimeout(3000)
+                                .build()
+                                .call()
+
                     }
                 }
                 relativeAdapter.setOnItemLongClickListener { _, view, position ->

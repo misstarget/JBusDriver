@@ -20,6 +20,12 @@ public class C {
 
     }
 
+    //movie detail
+    public static class C_MOVIE_DETAIL {
+        public static final String Open_Detail = "open/movie/detail";
+
+    }
+
     public static class Cache {
         public static final int DAY = ACache.TIME_DAY; //缓存的固定时间
         public static final int WEEK = ACache.TIME_DAY * 7; //缓存的固定时间

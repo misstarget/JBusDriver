@@ -8,7 +8,7 @@ import me.jbusdriver.base.KLog
 import me.jbusdriver.base.common.C
 import me.jbusdriver.base.postMain
 import me.jbusdriver.component.recommend.R
-import me.jbusdriver.component.recommend.mvp.bean.RecommendBean
+import me.jbusdriver.base.mvp.bean.RecommendBean
 
 class MainActivity : AppCompatActivity() {
 

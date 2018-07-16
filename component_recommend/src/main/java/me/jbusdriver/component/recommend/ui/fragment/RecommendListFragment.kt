@@ -15,7 +15,7 @@ import me.jbusdriver.base.http.JAVBusService.Companion.defaultFastUrl
 import me.jbusdriver.base.urlHost
 import me.jbusdriver.base.urlPath
 import me.jbusdriver.component.recommend.R
-import me.jbusdriver.component.recommend.mvp.bean.RecommendRespBean
+import me.jbusdriver.base.mvp.bean.RecommendRespBean
 import me.jbusdriver.component.recommend.mvp.presenter.HotRecommendPresenterImpl
 import me.jbusdriver.component.recommend.ui.contract.Contract.HotRecommendContract
 import me.jbusdriver.component.recommend.ui.contract.Contract.HotRecommendContract.HotRecommendView

@@ -5,10 +5,12 @@ import android.support.v7.widget.GridLayoutManager
 import android.text.TextUtils
 import android.view.View
 import android.widget.ImageView
+import com.billy.cc.core.component.CC
 import com.bumptech.glide.request.target.DrawableImageViewTarget
 import com.chad.library.adapter.base.BaseViewHolder
 import kotlinx.android.synthetic.main.layout_detail_image_samples.view.*
 import me.jbusdriver.base.GlideApp
+import me.jbusdriver.base.common.C
 import me.jbusdriver.base.common.toGlideUrl
 import me.jbusdriver.base.displayMetrics
 import me.jbusdriver.base.dpToPx
@@ -51,9 +53,13 @@ class ImageSampleHolder(context: Context) : BaseHolder(context) {
 
                         }
                         imageSampleAdapter.data.mapTo(destination) { if (TextUtils.isEmpty(it.image)) it.thumb else it.image }
-                        //todo
-//                        WatchLargeImageActivity.startShow(v.context, destination, pos)
-
+                        CC.obtainBuilder(C.C_IMAGE_BROWSER::class.java.name)
+                                .setActionName(C.C_IMAGE_BROWSER.Browser_Images)
+                                .addParam("images", destination)
+                                .addParam("index", pos)
+                                .setTimeout(3000)
+                                .build()
+                                .call()
                     }
                 }
             }

@@ -8,7 +8,7 @@ import io.reactivex.Flowable
 import me.jbusdriver.base.*
 import me.jbusdriver.base.common.C
 import me.jbusdriver.component.recommend.http.RecommendService
-import me.jbusdriver.component.recommend.mvp.bean.RecommendBean
+import me.jbusdriver.base.mvp.bean.RecommendBean
 import me.jbusdriver.component.recommend.mvp.model.RecommendModel
 import me.jbusdriver.component.recommend.ui.activity.HotRecommendActivity
 

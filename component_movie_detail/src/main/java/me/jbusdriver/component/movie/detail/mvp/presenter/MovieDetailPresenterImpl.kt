@@ -1,10 +1,13 @@
 package me.jbusdriver.component.movie.detail.mvp.presenter
 
+import com.billy.cc.core.component.CC
+import com.umeng.analytics.pro.cc
 import io.reactivex.BackpressureStrategy
 import io.reactivex.Flowable
 import io.reactivex.FlowableEmitter
 import io.reactivex.rxkotlin.addTo
 import me.jbusdriver.base.*
+import me.jbusdriver.base.common.C
 import me.jbusdriver.base.db.service.HistoryService
 import me.jbusdriver.base.http.JAVBusService
 import me.jbusdriver.base.mvp.bean.*
@@ -18,6 +21,7 @@ import java.util.*
 
 class MovieDetailPresenterImpl(private val fromHistory: Boolean) : BasePresenterImpl<MovieDetailView>(), MovieDetailContract.MovieDetailPresenter {
 
+    private val likeCallIds by lazy { mutableSetOf<String>() }
 
     private val loadFromNet = { s: String ->
         KLog.d("request for : $s")
@@ -101,43 +105,33 @@ class MovieDetailPresenterImpl(private val fromHistory: Boolean) : BasePresenter
     }
 
     override fun likeIt(movie: Movie, reason: String?) {
-//        val likeKey = movie.saveKey + "_like"
-//        Flowable.fromCallable {
-//            RecommendModel.getLikeCount(likeKey)
-//        }.flatMap { c ->
-//            if (c > 3) {
-//                error("一天点赞最多3次")
-//            }
-//            val uid = RecommendModel.getLikeUID(likeKey)
-//            val params = arrayMapof(
-//                    "uid" to uid,
-//                    "key" to RecommendBean(name = "${movie.code} ${movie.title}", img = movie.imageUrl, url = movie.link).toJsonString()
-//            )
-//            if (reason.orEmpty().isNotBlank()) {
-//                params.put("reason", reason)
-//            }
-//            RecommendService.INSTANCE.putRecommends(params).map {
-//                KLog.d("res : $it")
-//                RecommendModel.save(likeKey, uid)
-//                it["message"]?.asString?.let {
-//                    mView?.viewContext?.toast(it)
-//                }
-//                return@map Math.min(c + 1, 3)
-//            }
-//        }.onErrorReturn {
-//            it.message?.let {
-//                mView?.viewContext?.toast(it)
-//            }
-//            3
-//        }.compose(SchedulersCompat.io()).subscribeWith(object : SimpleSubscriber<Int>() {
-//            override fun onNext(t: Int) {
-//                super.onNext(t)
-//                mView?.changeLikeIcon(t)
-//            }
-//        }).addTo(rxManager)
+        // key reason bean
+        val likeKey = movie.saveKey + "_like"
+        val recommendBean = RecommendBean(name = "${movie.code} ${movie.title}", img = movie.imageUrl, url = movie.link)
 
-        //todo
-        NotImplementedError("late")
+        likeCallIds.add(
+                CC.obtainBuilder(C.C_RECOMMEND::class.java.name)
+                        .setActionName(C.C_RECOMMEND.Recommend_Like_It)
+                        .setContext(mView?.viewContext)
+                        .setParams(mapOf("key" to likeKey,
+                                "reason" to reason,
+                                "bean" to recommendBean
+                        ))
+                        .setTimeout(6000)
+                        .build()
+                        .callAsyncCallbackOnMainThread { cc, result ->
+                            KLog.d("cc $cc , result $result")
+                            val count = result.getDataItem("recommend_count", -1)
+                            mView?.changeLikeIcon(count)
+                        }
+        )
+    }
+
+    override fun onPresenterDestroyed() {
+        super.onPresenterDestroyed()
+        likeCallIds.forEach {
+            CC.cancel(it)
+        }
     }
 
     override fun restoreFromState() {

@@ -8,8 +8,15 @@
 
 
     <Button
-        android:id="@+id/btn_watch_large_images"
+        android:id="@+id/detail_from_bean"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="large imags" />
+        android:text="detail (bean) " />
+
+    <Button
+        app:layout_constraintLeft_toRightOf="@id/detail_from_bean"
+        android:id="@+id/detail_from_url"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="detail (url) " />
 </android.support.constraint.ConstraintLayout>

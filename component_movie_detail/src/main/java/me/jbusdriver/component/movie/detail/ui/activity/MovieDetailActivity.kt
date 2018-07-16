@@ -1,5 +1,6 @@
 package me.jbusdriver.component.movie.detail.ui.activity
 
+import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -14,8 +15,10 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import com.afollestad.materialdialogs.MaterialDialog
+import com.billy.cc.core.component.CC
 import com.bumptech.glide.request.target.DrawableImageViewTarget
 import com.gyf.barlibrary.ImmersionBar
+import io.reactivex.Flowable
 import kotlinx.android.synthetic.main.activity_movie_detail.*
 import kotlinx.android.synthetic.main.content_movie_detail.*
 import kotlinx.android.synthetic.main.layout_load_magnet.view.*
@@ -63,9 +66,6 @@ class MovieDetailActivity : AppBaseActivity<MovieDetailContract.MovieDetailPrese
                             mBasePresenter?.likeIt(movie!!, str.toString())
                         }.positiveText("发送").show()
             }
-
-
-//            RecommendService.INSTANCE.recommends().compose(SchedulersCompat.io()).subscribe(SimpleSubscriber())
         }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = movie?.des
@@ -226,8 +226,11 @@ class MovieDetailActivity : AppBaseActivity<MovieDetailContract.MovieDetailPrese
             supportActionBar?.title = data.title
             //cover fixme
             iv_movie_cover.setOnClickListener {
-                //todo
-//                WatchLargeImageActivity.startShow(this, listOf(data.cover) + data.imageSamples.map { it.image })
+                CC.obtainBuilder(C.C_IMAGE_BROWSER::class.java.name)
+                        .setActionName(C.C_IMAGE_BROWSER.Browser_Images)
+                        .addParam("images", listOf(data.cover) + data.imageSamples.map { it.image })
+                        .build()
+                        .call()
             }
             GlideApp.with(this).load(data.cover.toGlideUrl).thumbnail(0.1f).into(DrawableImageViewTarget(iv_movie_cover))
             //animation
@@ -249,24 +252,38 @@ class MovieDetailActivity : AppBaseActivity<MovieDetailContract.MovieDetailPrese
 
     override fun changeLikeIcon(likeCount: Int) {
         KLog.d("changeLikeIcon :$likeCount")
+
         findViewById<FloatingActionButton>(R.id.detail_fab_like)?.apply {
+            var like = this.tag as? Int ?: 0
+            like += if (likeCount < 0) {
+                1
+            } else {
+                likeCount
+            }
+            tag = like
             this.setImageDrawable(resources.getDrawable(R.drawable.ic_love_sel))
             DrawableCompat.setTint(this.drawable,
-                    ColorUtils.blendARGB(R.color.white.toColorInt(), Color.parseColor("#e91e63"), likeCount / 3f))
+                    ColorUtils.blendARGB(R.color.white.toColorInt(), Color.parseColor("#e91e63"), like / 3f))
         }
     }
 
     /*===========================other===================================*/
     companion object {
-        fun start(current: Context, movie: Movie, fromHistory: Boolean = false) {
-            current.startActivity(Intent(current, MovieDetailActivity::class.java).apply {
+        fun start(ctx: Context, movie: Movie, fromHistory: Boolean = false) {
+            ctx.startActivity(Intent(ctx, MovieDetailActivity::class.java).apply {
+                if (ctx is Application) {
+                    this.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                }
                 putExtra(C.BundleKey.Key_1, movie)
                 putExtra(C.BundleKey.Key_2, fromHistory)
             })
         }
 
-        fun start(current: Context, movieUrl: String) {
-            current.startActivity(Intent(current, MovieDetailActivity::class.java).apply {
+        fun start(ctx: Context, movieUrl: String) {
+            ctx.startActivity(Intent(ctx, MovieDetailActivity::class.java).apply {
+                if (ctx is Application) {
+                    this.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                }
                 putExtra(C.BundleKey.Key_1, movieUrl)
                 putExtra(C.BundleKey.Key_2, false)
             })

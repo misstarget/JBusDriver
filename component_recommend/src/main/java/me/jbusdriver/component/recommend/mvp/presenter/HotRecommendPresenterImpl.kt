@@ -4,7 +4,7 @@ import android.net.Uri
 import android.util.Base64
 import com.bumptech.glide.Glide
 import me.jbusdriver.component.recommend.http.RecommendService
-import me.jbusdriver.component.recommend.mvp.bean.RecommendRespBean
+import me.jbusdriver.base.mvp.bean.RecommendRespBean
 import me.jbusdriver.component.recommend.ui.contract.Contract
 import io.reactivex.rxkotlin.addTo
 import me.jbusdriver.base.*

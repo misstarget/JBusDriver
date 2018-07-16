@@ -18,7 +18,8 @@ class MainActivity : Activity() {
                             "images" to listOf("http://e.hiphotos.baidu.com/image/pic/item/fcfaaf51f3deb48fd0e9be27fc1f3a292cf57842.jpg",
                                     "http://a.hiphotos.baidu.com/image/pic/item/09fa513d269759eee5b61ac2befb43166c22dfd1.jpg",
                                     "http://g.hiphotos.baidu.com/image/pic/item/96dda144ad345982a4099c9b00f431adcbef8433.jpg"
-                            )
+                            ),
+                            "index" to 1
                     ))
                     .build()
 

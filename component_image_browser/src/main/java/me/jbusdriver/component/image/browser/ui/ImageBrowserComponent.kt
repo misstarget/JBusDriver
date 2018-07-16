@@ -14,6 +14,7 @@ class ImageBrowserComponent : IComponent {
                 val images = cc.getParamItem<List<String>>("images")
                 val index = cc.getParamItem("index") ?: 0
                 WatchLargeImageActivity.startShow(cc.context, images, index)
+                CC.sendCCResult(cc.callId, CCResult.success())
             }
         //确保每个逻辑分支上都会调用CC.sendCCResult将结果发送给调用方
             else -> CC.sendCCResult(cc.callId

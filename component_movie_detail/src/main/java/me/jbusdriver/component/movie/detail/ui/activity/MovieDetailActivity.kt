@@ -18,7 +18,10 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.billy.cc.core.component.CC
 import com.bumptech.glide.request.target.DrawableImageViewTarget
 import com.gyf.barlibrary.ImmersionBar
+import io.reactivex.BackpressureStrategy
 import io.reactivex.Flowable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.rxkotlin.addTo
 import kotlinx.android.synthetic.main.activity_movie_detail.*
 import kotlinx.android.synthetic.main.content_movie_detail.*
 import kotlinx.android.synthetic.main.layout_load_magnet.view.*
@@ -26,10 +29,7 @@ import me.jbusdriver.base.*
 import me.jbusdriver.base.common.AppBaseActivity
 import me.jbusdriver.base.common.C
 import me.jbusdriver.base.common.toGlideUrl
-import me.jbusdriver.base.mvp.bean.Movie
-import me.jbusdriver.base.mvp.bean.MovieDetail
-import me.jbusdriver.base.mvp.bean.convertDBItem
-import me.jbusdriver.base.mvp.bean.des
+import me.jbusdriver.base.mvp.bean.*
 import me.jbusdriver.base.mvp.model.CollectModel
 import me.jbusdriver.component.movie.detail.R
 import me.jbusdriver.component.movie.detail.mvp.MovieDetailContract
@@ -211,20 +211,30 @@ class MovieDetailActivity : AppBaseActivity<MovieDetailContract.MovieDetailPrese
             //Slide Up Animation
             KLog.d("date : $data")
             movie?.let {
-                //todo
-//                val likeKey = it.saveKey + "_like"
-//                Flowable.fromCallable {
-//                    RecommendModel.getLikeCount(likeKey)
-//                }.map {
-//                    Math.min(it, 3)
-//                }.subscribe {
-//                    changeLikeIcon(it)
-//                }.addTo(rxManager)
+                Flowable.create<Int>({ em ->
+                    val likeKey = it.saveKey + "_like"
+                    CC.obtainBuilder(C.C_RECOMMEND::class.java.name)
+                            .setActionName(C.C_RECOMMEND.Recommend_Like_Count)
+                            .addParam("key", likeKey)
+                            .setTimeout(3000)
+                            .build().callAsync { cc, result ->
+                                if (result.code != 0) {
+                                    em.onError(Throwable(result.toString()))
+                                } else {
+                                    em.onNext(result.getDataItem("recommend_count"))
+                                }
+                            }
+                }, BackpressureStrategy.LATEST).map {
+                    Math.min(it, 3)
+                }.observeOn(AndroidSchedulers.mainThread()).subscribe({
+                    changeLikeIcon(it)
+                }, {
+                    KLog.w("error $it")
+                }).addTo(rxManager)
 
             }
 
             supportActionBar?.title = data.title
-            //cover fixme
             iv_movie_cover.setOnClickListener {
                 CC.obtainBuilder(C.C_IMAGE_BROWSER::class.java.name)
                         .setActionName(C.C_IMAGE_BROWSER.Browser_Images)

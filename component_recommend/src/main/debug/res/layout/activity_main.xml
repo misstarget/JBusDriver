@@ -24,6 +24,13 @@
             android:layout_height="wrap_content"
             android:text="like it （点赞）"
             app:layout_constraintLeft_toRightOf="@+id/recommend_btn_show_activity" />
+        <Button
+            android:id="@+id/recommend_get_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="获取点赞数"
+            app:layout_constraintLeft_toRightOf="@+id/recommend_btn_like_it" />
+
 
     </android.support.constraint.ConstraintLayout>
 

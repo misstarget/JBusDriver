@@ -16,12 +16,22 @@ class RecommendComponent : IComponent {
 
 
     override fun onCall(cc: CC): Boolean {
-        KLog.d("on call ${cc.callId} ${cc.actionName}")
+        KLog.d("on call ${cc.callId} ${cc.actionName} $cc")
         when (cc.actionName) {
             C.C_RECOMMEND.Open_Recommend -> {
-                KLog.d("cc action :${cc.actionName}")
                 cc.openActivity<HotRecommendActivity>()
             }
+            C.C_RECOMMEND.Recommend_Like_Count -> {
+                val likeKey = cc.getParamItem<String?>("key")
+                if (likeKey == null) {
+                    CC.sendCCResult(cc.callId, CCResult.error("like key must not null"))
+                    return false
+                }
+
+                CC.sendCCResult(cc.callId , CCResult.success("recommend_count", RecommendModel.getLikeCount(likeKey)))
+                return true
+            }
+
             C.C_RECOMMEND.Recommend_Like_It -> {
                 val likeKey = cc.getParamItem<String?>("key")
                 val reason = cc.getParamItem<String?>("reason")
@@ -46,7 +56,7 @@ class RecommendComponent : IComponent {
                     }
 
                     //get unique id
-                    val uid = RecommendModel.getLikeUID(likeKey!!)
+                    val uid = RecommendModel.getLikeUID(likeKey)
 
                     val opt = if (BuildConfig.DEBUG) {
                         Flowable.just(JsonObject())

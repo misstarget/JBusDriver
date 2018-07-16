@@ -42,6 +42,19 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
         }
+
+        recommend_get_count.setOnClickListener {
+
+            CC.obtainBuilder(C.C_RECOMMEND::class.java.name).setContext(this)
+                    .setActionName(C.C_RECOMMEND.Recommend_Like_Count)
+                    .addParam("key", "abc")
+                    .build().callAsync { cc, result ->
+                        KLog.d("call $result")
+                        postMain {
+                            recommend_tv_info.text = "$cc \r\n $result"
+                        }
+                    }
+        }
     }
 
 }

@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
 
         recommend_btn_show_activity.setOnClickListener {
-            CC.obtainBuilder(C.C_RECOMMEND::class.java.name).setContext(this).setActionName(C.C_RECOMMEND.Open_Recommend)
+            CC.obtainBuilder(C.C_RECOMMEND::class.java.name).setContext(this).setActionName(C.C_RECOMMEND.Recommend_Open)
                     .build().callAsync { cc, result ->
                         KLog.d("call $result")
                         postMain {

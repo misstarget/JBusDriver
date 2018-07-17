@@ -46,7 +46,7 @@ data class Movie(
                 if (host.isNotBlank()) {
                     val key = if (host.endsWith("xyz")) "xyz" else "default"
                     val set = JAVBusService.defaultImageUrlHosts.getOrPut(key) {
-                       hashSetOf()
+                        hashSetOf()
                     }
                     if (host !in set) {
                         set.add(host)
@@ -62,7 +62,7 @@ data class Movie(
 }
 
 val Movie.saveKey
-    inline get() = code.trim() + "_" + date.trim()
+    inline get() = code.toLowerCase().trim()
 
 private val Movie.isInValid
     inline get() = TextUtils.isEmpty(code) && TextUtils.isEmpty(link)

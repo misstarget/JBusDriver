@@ -24,7 +24,6 @@ import me.jbusdriver.base.mvp.model.CollectModel
 import me.jbusdriver.base.mvp.ui.adapter.BaseAppAdapter
 import me.jbusdriver.base.mvp.ui.holder.BaseHolder
 import me.jbusdriver.component.movie.detail.R
-import me.jbusdriver.component.movie.detail.R.id.rv_recycle_relative_movies
 import java.util.*
 
 
@@ -43,7 +42,8 @@ class RelativeMovieHolder(context: Context) : BaseHolder(context) {
                     relativeAdapter.data.getOrNull(position)?.let {
                         KLog.d("relative  : $it")
                         CC.obtainBuilder(C.C_MOVIE_DETAIL::class.java.name)
-                                .setActionName(C.C_MOVIE_DETAIL.Open_Detail)
+                                .setActionName(C.C_MOVIE_DETAIL.Open_Movie_Detail)
+                                .setContext(context)
                                 .addParam("movie_bean", it)
                                 .setTimeout(3000)
                                 .build()

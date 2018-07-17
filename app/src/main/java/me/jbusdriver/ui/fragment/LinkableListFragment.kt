@@ -114,7 +114,7 @@ abstract class LinkableListFragment<T> : AppBaseRecycleFragment<LinkListContract
             R.id.action_recommend -> {
                 KLog.d("action_recommend ${CC.hasComponent(C.C_RECOMMEND::class.java.name)}")
                 //call recommend todo
-                CC.obtainBuilder(C.C_RECOMMEND::class.java.name).setContext(viewContext).setActionName(C.C_RECOMMEND.Open_Recommend)
+                CC.obtainBuilder(C.C_RECOMMEND::class.java.name).setContext(viewContext).setActionName(C.C_RECOMMEND.Recommend_Open)
                         .build().callAsync { cc, result ->
                             KLog.d("call $result")
                         }

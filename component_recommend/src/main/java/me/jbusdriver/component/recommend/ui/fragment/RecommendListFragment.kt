@@ -4,12 +4,14 @@ import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import com.billy.cc.core.component.CC
 import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.chad.library.adapter.base.loadmore.LoadMoreView
 import me.jbusdriver.base.KLog
 import me.jbusdriver.base.common.AppBaseRecycleFragment
+import me.jbusdriver.base.common.C
 import me.jbusdriver.base.common.toGlideUrl
 import me.jbusdriver.base.http.JAVBusService.Companion.defaultFastUrl
 import me.jbusdriver.base.urlHost
@@ -71,13 +73,20 @@ class RecommendListFragment : AppBaseRecycleFragment<HotRecommendContract.HotRec
                 val xyz = it.key.url.urlHost.endsWith("xyz")
                 val needChange = !xyz && it.key.url.urlHost != defaultFastUrl
                 val url = if (needChange) defaultFastUrl + it.key.url.urlPath else it.key.url
-                //todo add link
-//                if (it.key.url.contains("/star/", false)) {
+
+                if (it.key.url.contains("/star/", false)) {
+                    //todo add link
 //                    MovieListActivity.start(viewContext, ActressInfo(it.key.name, it.key.img, url))
-//                } else {
-////                    SearchResultActivity.start(this.viewContext, it.key.name.split(" ").component1())
-//                    MovieDetailActivity.start(this.viewContext, url)
-//                }
+                } else {
+//                    SearchResultActivity.start(this.viewContext, it.key.name.split(" ").component1())
+                    CC.obtainBuilder(C.C_MOVIE_DETAIL::class.java.name)
+                            .setActionName(C.C_MOVIE_DETAIL.Open_Movie_Detail)
+                            .setContext(viewContext)
+                            .addParam("movie_url", url)
+                            .setTimeout(3000)
+                            .build()
+                            .call()
+                }
             }
         }
     }

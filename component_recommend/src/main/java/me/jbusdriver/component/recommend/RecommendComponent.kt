@@ -18,7 +18,7 @@ class RecommendComponent : IComponent {
     override fun onCall(cc: CC): Boolean {
         KLog.d("on call ${cc.callId} ${cc.actionName} $cc")
         when (cc.actionName) {
-            C.C_RECOMMEND.Open_Recommend -> {
+            C.C_RECOMMEND.Recommend_Open -> {
                 cc.openActivity<HotRecommendActivity>()
             }
             C.C_RECOMMEND.Recommend_Like_Count -> {

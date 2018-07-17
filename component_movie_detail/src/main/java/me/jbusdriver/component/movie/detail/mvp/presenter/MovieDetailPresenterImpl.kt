@@ -59,17 +59,6 @@ class MovieDetailPresenterImpl(private val fromHistory: Boolean) : BasePresenter
         mView?.movie?.let {
             if (!fromHistory)
                 HistoryService.insert(History(it.DBtype, Date(), it.toJsonString()))
-
-            //todo
-//            val likeKey = it.saveKey + "_like"
-//            Flowable.fromCallable {
-//                RecommendModel.getLikeCount(likeKey)
-//            }.map {
-//                Math.min(it, 3)
-//            }.subscribe {
-//                mView?.changeLikeIcon(it)
-//            }.addTo(rxManager)
-
         }
 
     }
@@ -117,12 +106,13 @@ class MovieDetailPresenterImpl(private val fromHistory: Boolean) : BasePresenter
                                 "reason" to reason,
                                 "bean" to recommendBean
                         ))
-                        .setTimeout(6000)
                         .build()
                         .callAsyncCallbackOnMainThread { cc, result ->
                             KLog.d("cc $cc , result $result")
-                            val count = result.getDataItem("recommend_count", -1)
-                            mView?.changeLikeIcon(count)
+                            if(result.isSuccess){
+                                val count = result.getDataItem("recommend_count", -1)
+                                mView?.changeLikeIcon(count)
+                            }
                         }
         )
     }

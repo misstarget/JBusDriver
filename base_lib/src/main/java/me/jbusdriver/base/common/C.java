@@ -10,7 +10,7 @@ public class C {
 
     //推荐component
     public static class C_RECOMMEND {
-        public static final String Open_Recommend = "recommend/open";
+        public static final String Recommend_Open = "recommend/open";
         public static final String Recommend_Like_It = "recommend/like/it";
         public static final String Recommend_Like_Count = "recommend/like/count";
     }
@@ -23,7 +23,7 @@ public class C {
 
     //movie detail
     public static class C_MOVIE_DETAIL {
-        public static final String Open_Detail = "movie/detail/open";
+        public static final String Open_Movie_Detail = "movie/detail/open";
 
     }
 

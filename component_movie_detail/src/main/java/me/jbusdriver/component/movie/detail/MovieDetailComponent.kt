@@ -10,7 +10,7 @@ import me.jbusdriver.component.movie.detail.ui.activity.MovieDetailActivity
 class MovieDetailComponent : IComponent {
     override fun onCall(cc: CC): Boolean {
         when (cc.actionName) {
-            C.C_MOVIE_DETAIL.Open_Detail -> {
+            C.C_MOVIE_DETAIL.Open_Movie_Detail -> {
                 val isInternal = cc.params.containsKey("movie_bean")
                 if (isInternal) {
                     val bean = cc.getParamItem<Movie?>("movie_bean")
@@ -20,7 +20,6 @@ class MovieDetailComponent : IComponent {
                     }
                     val isFromHistory = cc.getParamItem("from_history") ?: false
                     MovieDetailActivity.start(cc.context, bean, isFromHistory)
-                    CC.sendCCResult(cc.callId, CCResult.success())
                 } else {
                     val url = cc.getParamItem<String>("movie_url")
                     if (url.isNullOrEmpty()) {
@@ -28,8 +27,8 @@ class MovieDetailComponent : IComponent {
                         return false
                     }
                     MovieDetailActivity.start(cc.context, url)
-                    CC.sendCCResult(cc.callId, CCResult.success())
                 }
+                CC.sendCCResult(cc.callId, CCResult.success())
             }
         }
         return false

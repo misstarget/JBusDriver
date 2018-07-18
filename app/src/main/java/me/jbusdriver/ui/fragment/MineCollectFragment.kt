@@ -8,6 +8,7 @@ import jbusdriver.me.jbusdriver.R
 import me.jbusdriver.mvp.MineCollectContract
 import me.jbusdriver.mvp.presenter.MineCollectPresenterImpl
 import me.jbusdriver.base.data.AppConfiguration
+import me.jbusdriver.base.mvp.fragment.TabViewPagerFragment
 
 /**
  * since 1.1 remove info menu

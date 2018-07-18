@@ -1,7 +1,6 @@
 package me.jbusdriver.component.movie.detail.mvp.presenter
 
 import com.billy.cc.core.component.CC
-import com.umeng.analytics.pro.cc
 import io.reactivex.BackpressureStrategy
 import io.reactivex.Flowable
 import io.reactivex.FlowableEmitter
@@ -14,12 +13,12 @@ import me.jbusdriver.base.mvp.bean.*
 import me.jbusdriver.base.mvp.model.AbstractBaseModel
 import me.jbusdriver.base.mvp.model.BaseModel
 import me.jbusdriver.base.mvp.presenter.BasePresenterImpl
-import me.jbusdriver.component.movie.detail.mvp.MovieDetailContract
-import me.jbusdriver.component.movie.detail.mvp.MovieDetailContract.MovieDetailView
+import me.jbusdriver.component.movie.detail.mvp.Contract
+import me.jbusdriver.component.movie.detail.mvp.Contract.MovieDetailView
 import org.jsoup.Jsoup
 import java.util.*
 
-class MovieDetailPresenterImpl(private val fromHistory: Boolean) : BasePresenterImpl<MovieDetailView>(), MovieDetailContract.MovieDetailPresenter {
+class MovieDetailPresenterImpl(private val fromHistory: Boolean) : BasePresenterImpl<MovieDetailView>(), Contract.MovieDetailPresenter {
 
     private val likeCallIds by lazy { mutableSetOf<String>() }
 

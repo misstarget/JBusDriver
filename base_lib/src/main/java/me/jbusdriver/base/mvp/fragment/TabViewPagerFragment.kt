@@ -1,12 +1,12 @@
-package me.jbusdriver.ui.fragment
+package me.jbusdriver.base.mvp.fragment
 
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentPagerAdapter
 import android.view.View
 import me.jbusdriver.base.mvp.BaseView
-import jbusdriver.me.jbusdriver.R
-import kotlinx.android.synthetic.main.layout_mine_collect.*
+import kotlinx.android.synthetic.main.basic_layout_tab_viewpager.*
+import me.jbusdriver.base.R
 import me.jbusdriver.base.common.AppBaseFragment
 import me.jbusdriver.base.mvp.presenter.BasePresenter
 
@@ -18,7 +18,7 @@ abstract class TabViewPagerFragment<P : BasePresenter<V>, V : BaseView> : AppBas
     abstract val mTitles: List<String>
     abstract val mFragments: List<Fragment>
 
-    override val layoutId = R.layout.layout_mine_collect
+    override val layoutId = R.layout.basic_layout_tab_viewpager
 
     override fun initWidget(rootView: View) {
         initForViewPager()

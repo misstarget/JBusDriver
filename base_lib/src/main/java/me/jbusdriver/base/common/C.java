@@ -27,6 +27,12 @@ public class C {
 
     }
 
+    //magnet
+    public static class C_MAGNET {
+        public static final String Open_Search_Magnet_Result = "magnet/result/open";
+
+    }
+
     public static class Cache {
         public static final int DAY = ACache.TIME_DAY; //缓存的固定时间
         public static final int WEEK = ACache.TIME_DAY * 7; //缓存的固定时间

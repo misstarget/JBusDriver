@@ -6,6 +6,7 @@ import me.jbusdriver.mvp.MineCollectContract
 import me.jbusdriver.base.mvp.bean.SearchLink
 import me.jbusdriver.mvp.presenter.MineCollectPresenterImpl
 import me.jbusdriver.base.data.enums.SearchType
+import me.jbusdriver.base.mvp.fragment.TabViewPagerFragment
 
 /**
  * Created by Administrator on 2017/7/17 0017.

@@ -15,6 +15,7 @@ import me.jbusdriver.mvp.GenrePageContract.GenrePagePresenter
 import me.jbusdriver.base.mvp.bean.Genre
 import me.jbusdriver.mvp.presenter.GenrePagePresenterImpl
 import me.jbusdriver.base.data.enums.DataSourceType
+import me.jbusdriver.base.mvp.fragment.TabViewPagerFragment
 
 /**
  * 类别分类

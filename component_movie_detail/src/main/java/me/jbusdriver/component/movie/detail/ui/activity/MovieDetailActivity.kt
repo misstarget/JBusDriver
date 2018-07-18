@@ -32,12 +32,12 @@ import me.jbusdriver.base.common.toGlideUrl
 import me.jbusdriver.base.mvp.bean.*
 import me.jbusdriver.base.mvp.model.CollectModel
 import me.jbusdriver.component.movie.detail.R
-import me.jbusdriver.component.movie.detail.mvp.MovieDetailContract
+import me.jbusdriver.component.movie.detail.mvp.Contract
 import me.jbusdriver.component.movie.detail.mvp.presenter.MovieDetailPresenterImpl
 import me.jbusdriver.component.movie.detail.ui.holder.*
 
 
-class MovieDetailActivity : AppBaseActivity<MovieDetailContract.MovieDetailPresenter, MovieDetailContract.MovieDetailView>(), MovieDetailContract.MovieDetailView {
+class MovieDetailActivity : AppBaseActivity<Contract.MovieDetailPresenter, Contract.MovieDetailView>(), Contract.MovieDetailView {
 
     private val statusBarHeight by lazy { ImmersionBar.getActionBarHeight(this) }
 

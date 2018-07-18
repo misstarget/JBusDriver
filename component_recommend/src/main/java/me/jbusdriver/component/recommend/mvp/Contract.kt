@@ -1,4 +1,4 @@
-package me.jbusdriver.component.recommend.ui.contract
+package me.jbusdriver.component.recommend.mvp
 
 import me.jbusdriver.base.mvp.BaseView
 import me.jbusdriver.base.mvp.presenter.BasePresenter

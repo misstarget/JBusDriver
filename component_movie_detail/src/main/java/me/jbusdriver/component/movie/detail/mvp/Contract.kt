@@ -4,7 +4,7 @@ import me.jbusdriver.base.mvp.BaseView
 import me.jbusdriver.base.mvp.bean.Movie
 import me.jbusdriver.base.mvp.presenter.BasePresenter
 
-interface MovieDetailContract {
+interface Contract {
     interface MovieDetailView : BaseView {
         val movie: Movie?
         val url: String?

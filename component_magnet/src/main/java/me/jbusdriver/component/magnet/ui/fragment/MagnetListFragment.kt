@@ -1,4 +1,4 @@
-package me.jbusdriver.ui.fragment
+package me.jbusdriver.component.magnet.ui.fragment
 
 import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
@@ -10,17 +10,18 @@ import com.chad.library.adapter.base.BaseViewHolder
 import io.reactivex.Flowable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
-import jbusdriver.me.jbusdriver.R
 import me.jbusdriver.base.*
 import me.jbusdriver.base.common.AppBaseRecycleFragment
 import me.jbusdriver.base.common.C
 import me.jbusdriver.base.mvp.bean.Magnet
-import me.jbusdriver.mvp.MagnetListContract
-import me.jbusdriver.mvp.presenter.MagnetListPresenterImpl
 import me.jbusdriver.base.mvp.ui.adapter.BaseAppAdapter
+import me.jbusdriver.component.magnet.R
+import me.jbusdriver.component.magnet.mvp.Contract.MagnetListContract
+import me.jbusdriver.component.magnet.mvp.Contract.MagnetListContract.MagnetListPresenter
+import me.jbusdriver.component.magnet.mvp.presenter.MagnetListPresenterImpl
 import org.jsoup.Jsoup
 
-class MagnetListFragment : AppBaseRecycleFragment<MagnetListContract.MagnetListPresenter, MagnetListContract.MagnetListView, Magnet>(), MagnetListContract.MagnetListView {
+class MagnetListFragment : AppBaseRecycleFragment<MagnetListPresenter, MagnetListContract.MagnetListView, Magnet>(), MagnetListContract.MagnetListView {
 
     private val keyword by lazy { arguments?.getString(C.BundleKey.Key_1) ?: error("need keyword") }
     private val magnetLoaderKey by lazy {
@@ -29,15 +30,18 @@ class MagnetListFragment : AppBaseRecycleFragment<MagnetListContract.MagnetListP
 
     override fun createPresenter() = MagnetListPresenterImpl(magnetLoaderKey, keyword)
 
+    override val swipeView: SwipeRefreshLayout? get() = findView(R.id.basic_sr_refresh)
     override val layoutId: Int = R.layout.basic_layout_swipe_recycle
-    override fun getSwipeView(): SwipeRefreshLayout? = findView(R.id.basic_sr_refresh)
-    override val recycleView: RecyclerView get() = findView(R.id.basic_rv_recycle)
+    override val recycleView: RecyclerView
+        get() = findView(R.id.basic_rv_recycle)
+                ?: error("not find RecyclerView in MagnetListFragment")
+
     override val layoutManager: RecyclerView.LayoutManager  by lazy { LinearLayoutManager(viewContext) }
 
 
     override val adapter: BaseQuickAdapter<Magnet, in BaseViewHolder> by lazy {
 
-        object : BaseAppAdapter<Magnet, BaseViewHolder>(R.layout.layout_magnet_item) {
+        object : BaseAppAdapter<Magnet, BaseViewHolder>(R.layout.magnet_layout_magnet_item) {
 
             override fun convert(helper: BaseViewHolder, item: Magnet) {
                 KLog.d("convert $item")

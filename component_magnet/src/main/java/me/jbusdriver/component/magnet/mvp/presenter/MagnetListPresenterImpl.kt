@@ -1,4 +1,4 @@
-package me.jbusdriver.mvp.presenter
+package me.jbusdriver.component.magnet.mvp.presenter
 
 import io.reactivex.Flowable
 import io.reactivex.rxkotlin.addTo
@@ -11,11 +11,11 @@ import me.jbusdriver.base.mvp.bean.PageInfo
 import me.jbusdriver.base.mvp.bean.ResultPageBean
 import me.jbusdriver.base.mvp.model.BaseModel
 import me.jbusdriver.base.mvp.presenter.AbstractRefreshLoadMorePresenterImpl
-import me.jbusdriver.mvp.MagnetListContract
-import me.jbusdriver.base.data.magnet.MagnetLoaders
+import me.jbusdriver.component.magnet.loader.MagnetLoaders
+import me.jbusdriver.component.magnet.mvp.Contract
 import org.jsoup.nodes.Document
 
-class MagnetListPresenterImpl(private val magnetLoaderKey: String, private val keyword: String) : AbstractRefreshLoadMorePresenterImpl<MagnetListContract.MagnetListView, Magnet>(), MagnetListContract.MagnetListPresenter {
+class MagnetListPresenterImpl(private val magnetLoaderKey: String, private val keyword: String) : AbstractRefreshLoadMorePresenterImpl<Contract.MagnetListContract.MagnetListView, Magnet>(), Contract.MagnetListContract.MagnetListPresenter {
 
     private val loader by lazy {
         MagnetLoaders[magnetLoaderKey] ?: error("not matched magnet loader")

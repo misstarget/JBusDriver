@@ -19,8 +19,8 @@ import me.jbusdriver.base.urlPath
 import me.jbusdriver.component.recommend.R
 import me.jbusdriver.base.mvp.bean.RecommendRespBean
 import me.jbusdriver.component.recommend.mvp.presenter.HotRecommendPresenterImpl
-import me.jbusdriver.component.recommend.ui.contract.Contract.HotRecommendContract
-import me.jbusdriver.component.recommend.ui.contract.Contract.HotRecommendContract.HotRecommendView
+import me.jbusdriver.component.recommend.mvp.Contract.HotRecommendContract
+import me.jbusdriver.component.recommend.mvp.Contract.HotRecommendContract.HotRecommendView
 
 
 /**
@@ -34,7 +34,7 @@ class RecommendListFragment : AppBaseRecycleFragment<HotRecommendContract.HotRec
     override val swipeView: SwipeRefreshLayout? get() = findView(R.id.basic_sr_refresh)
     override val recycleView: RecyclerView
         get() = findView(R.id.basic_rv_recycle)
-                ?: error("not find RecyclerView")
+                ?: error("not find RecyclerView in RecommendListFragment")
     override val layoutManager: RecyclerView.LayoutManager  by lazy { LinearLayoutManager(viewContext) }
 
     override val adapter = object : BaseQuickAdapter<RecommendRespBean, BaseViewHolder>(R.layout.recommend_layout_recommend_item) {

@@ -87,14 +87,4 @@ interface HistoryContract {
     }
 }
 
-interface MagnetPagerContract {
-    interface MagnetPagerView : BaseView
-    interface MagnetPagerPresenter : BasePresenter<MagnetPagerView>, BasePresenter.LazyLoaderPresenter
-}
-
-
-interface MagnetListContract {
-    interface MagnetListView : BaseView.BaseListWithRefreshView
-    interface MagnetListPresenter : BasePresenter.BaseRefreshLoadMorePresenter<MagnetListView>, BasePresenter.LazyLoaderPresenter
-}
 

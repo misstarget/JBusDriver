@@ -19,7 +19,9 @@ class MainActivity : AppCompatActivity() {
                     .addParam("movie_bean", Movie("MIAE-236", "https://pics.javcdn.pw/thumb/6jra.jpg", "MIAE-236", "", "https://www.javbus6.pw/MIAE-236"))
                     .addParam("from_history", Math.random() <= 0.5)
                     .build()
-                    .call()
+                    .callAsyncCallbackOnMainThread { cc, result ->
+                        detail_tv_info.text = "$cc \r\n $result"
+                    }
         }
 
         detail_from_url.setOnClickListener {
@@ -27,7 +29,9 @@ class MainActivity : AppCompatActivity() {
                     .setActionName(C.C_MOVIE_DETAIL.Open_Movie_Detail)
                     .addParam("movie_url", "https://www.javbus6.pw/MIAE-236")
                     .build()
-                    .call()
+                    .callAsyncCallbackOnMainThread { cc, result ->
+                        detail_tv_info.text = "$cc \r\n $result"
+                    }
         }
     }
 }
